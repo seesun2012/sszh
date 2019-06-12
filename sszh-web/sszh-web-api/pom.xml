@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <artifactId>sszh-web</artifactId>
+        <groupId>com.sszh</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>sszh-web-api</artifactId>
+    <name>sszh-web-api-对外网关服务器</name>
+    <packaging>war</packaging>
+
+    <build>
+        <plugins>
+            <!-- 配置web.xml文件的配置 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <!-- 指定web.xml的路径  -->
+                    <webXml>src\main\webapp\WEB-INF\web.xml</webXml>
+                    <!-- 指定jsp、js、css的路劲 -->
+                    <warSourceDirectory>WebRoot</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
