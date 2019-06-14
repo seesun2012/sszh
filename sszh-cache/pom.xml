@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sszh-cache</artifactId>
-    <name>sszh-cache-缓存模块</name>
+    <description>sszh-cache-缓存模块</description>
     <packaging>jar</packaging>
 
 

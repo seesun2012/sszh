@@ -10,7 +10,8 @@
     </parent>
 
     <artifactId>sszh-web-api</artifactId>
-    <name>sszh-web-api-对外网关服务器</name>
+    <name>sszh-web-api</name>
+    <description>sszh-web-api-对外网关服务器</description>
     <packaging>war</packaging>
 
     <build>

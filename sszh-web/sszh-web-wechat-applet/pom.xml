@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sszh-web-wechat-applet</artifactId>
-    <name>sszh-web-wechat-applet-微信小程序</name>
+    <name>sszh-web-wechat-applet</name>
+    <description>sszh-web-wechat-applet-微信小程序</description>
     <packaging>war</packaging>
 
     <build>

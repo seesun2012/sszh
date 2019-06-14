@@ -10,7 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sszh-server</artifactId>
-    <name>sszh-server-接口服务层</name>
-    <packaging>jar</packaging>
+    <name>sszh-server</name>
+    <description>sszh-server-接口服务层目录</description>
+    <packaging>pom</packaging>
 
 </project>

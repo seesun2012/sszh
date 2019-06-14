@@ -10,7 +10,8 @@
     </parent>
 
     <artifactId>sszh-web-admin</artifactId>
-    <name>sszh-web-admin-后端管理系统</name>
+    <name>sszh-web-admin</name>
+    <description>sszh-web-admin-后端管理系统</description>
     <packaging>war</packaging>
 
     <build>

@@ -22,7 +22,7 @@
     </parent>
 
     <artifactId>sszh-common</artifactId>
-    <name>sszh-common-通用工具包</name>
+    <description>sszh-common-通用工具包</description>
     <packaging>jar</packaging>
     <url>http://maven.apache.org</url>
 

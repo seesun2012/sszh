@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sszh-web</artifactId>
-    <name>sszh-web-父级WEB目录</name>
+    <description>sszh-web-父级WEB目录</description>
     <modules>
         <module>sszh-web-admin</module>
         <module>sszh-web-api</module>
