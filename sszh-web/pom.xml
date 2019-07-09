@@ -11,12 +11,13 @@
 
     <artifactId>sszh-web</artifactId>
     <description>sszh-web-父级WEB目录</description>
+    <packaging>pom</packaging>
+
     <modules>
         <module>sszh-web-admin</module>
         <module>sszh-web-api</module>
         <module>sszh-web-wechat-applet</module>
     </modules>
-    <packaging>pom</packaging>
 
 
 </project>

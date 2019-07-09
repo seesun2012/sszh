@@ -1,0 +1,19 @@
+spring:
+    application:
+        name: eureka-server
+server:
+    port: 7075
+logging:
+    file: logs/${spring.application.name}.log
+    level:
+        root: info
+
+eureka:
+    server:
+        enable-self-preservation: true
+        eviction-interval-timer-in-ms: 60000
+    client:
+        register-with-eureka: false
+        fetch-registry: false
+        service-url:
+            defaultZone: http://127.0.0.1:${server.port}/eureka/
