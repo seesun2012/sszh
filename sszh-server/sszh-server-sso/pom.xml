@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <!-- 引入父工程的spring boot依赖 -->
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-server</artifactId>
+        <artifactId>sszh-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sszh</groupId>
-    <artifactId>sszh-server-eureka</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <description>spring could 注册中心</description>
-
+    <artifactId>sszh-server-sso</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>sszh-server-sso</name>
+    <description>sso</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,41 +21,58 @@
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
     </properties>
 
-
     <dependencies>
+        <!--sszh公共工具类-->
+        <dependency>
+            <groupId>com.sszh</groupId>
+            <artifactId>sszh-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
         <!--web模块-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--Eureka服务端模块-->
+
+        <!-- Eureka客户端模块 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-        <!-- HTTP basic用户认证模块 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+
         <!-- 健康检查模块 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>-->
+
+        <!-- 健康监控客户端 -->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
         </dependency>
+
+        <!--Feign模块-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
         <!-- tomcat支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -69,21 +86,11 @@
         </dependencies>
     </dependencyManagement>
 
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <!--打包跳过测试-->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
-                <configuration>
-                    <skipTests>true</skipTests>
-                </configuration>
             </plugin>
         </plugins>
     </build>
