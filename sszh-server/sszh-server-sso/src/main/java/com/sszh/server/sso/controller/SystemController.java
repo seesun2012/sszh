@@ -1,13 +1,11 @@
 package com.sszh.server.sso.controller;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * 系统配置主控制器
  */
-@Configuration
 @RestController
 public class SystemController {
 
@@ -21,7 +19,7 @@ public class SystemController {
     /**
      * 获取端口配置
      */
-    @RequestMapping(value = "port", method = RequestMethod.GET)
+    @RequestMapping(value = "/port", method = RequestMethod.GET)
     @ResponseBody
     public String home(@RequestParam String name) {
         String str = hosts;

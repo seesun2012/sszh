@@ -5,20 +5,12 @@ spring:
   application:
     name: sszh-server-config
   profiles:
-    #从本地读取
-    active: native
-    #从SVN中提取
-    #active: subversion
+    active: native                      #从本地读取：native   从SVN中提取：subversion
   cloud:
     config:
       server:
         native:
-          search-locations: classpath:/properties/
-
-logging:
-  file: logs/${spring.application.name}.log
-  level:
-    root: INFO
+          search-locations: classpath:/config/
 
 #spring could 为服务注册中心
 eureka:

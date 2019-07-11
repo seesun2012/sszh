@@ -1,0 +1,34 @@
+server:
+  port: 7077
+
+#spring could 为服务注册中心
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+
+
+spring:
+  application:
+    name: sszh-server-sso
+  cloud:
+    config:
+      uri: http://localhost:7076/
+      profile: dev
+  #Spring Boot Admin 健康监测服务
+  boot:
+    admin:
+      client:
+        url: http://localhost:9880  #申明SBA的地址
+
+#放开所有节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
