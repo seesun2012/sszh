@@ -1,21 +1,24 @@
 package com.sszh.server.order.controller;
 
 import com.sszh.server.order.bean.User;
-import com.sszh.server.order.feign.UserFeignClient;
+import com.sszh.server.order.feign.OrderFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 订单-主控制器
+ */
 @RestController
-public class UserController {
+public class OrderController {
 
     @Autowired
-    private UserFeignClient userFeignClient;
+    private OrderFeignClient orderFeignClient;
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/order/{id}")
     public User findById(@PathVariable Long id) {
-        User user = this.userFeignClient.findById(id);
+        User user = this.orderFeignClient.findById(id);
         return user;
     }
 }

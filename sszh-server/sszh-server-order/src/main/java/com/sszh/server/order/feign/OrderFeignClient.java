@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "cloud-provider", fallbackFactory = FeignClientFallbackFactory.class)
-public interface UserFeignClient {
+@FeignClient(name = "SSZH-SERVER-ORDER", fallbackFactory = FeignClientFallbackFactory.class)
+public interface OrderFeignClient {
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
     public User findById(@PathVariable("id") Long id);
 
 }

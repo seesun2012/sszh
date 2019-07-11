@@ -5,6 +5,9 @@ import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * 健康监控服务端
+ */
 @SpringBootApplication
 @EnableAdminServer
 public class SszhServerBootAdminApplication {

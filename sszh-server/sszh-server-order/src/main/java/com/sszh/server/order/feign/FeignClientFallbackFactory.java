@@ -10,12 +10,12 @@ import org.springframework.stereotype.Component;
  * UserFeignClient的fallbackFactory类，该类需实现FallbackFactory接口，并覆写create方法
  */
 @Component
-public class FeignClientFallbackFactory implements FallbackFactory<UserFeignClient> {
+public class FeignClientFallbackFactory implements FallbackFactory<OrderFeignClient> {
     private static final Logger LOGGER = LoggerFactory.getLogger(FeignClientFallbackFactory.class);
 
     @Override
-    public UserFeignClient create(Throwable cause) {
-        return new UserFeignClient() {
+    public OrderFeignClient create(Throwable cause) {
+        return new OrderFeignClient() {
             @Override
             public User findById(Long id) {
                 FeignClientFallbackFactory.LOGGER.info("fallback; reason was:", cause);

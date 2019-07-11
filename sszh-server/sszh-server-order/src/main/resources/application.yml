@@ -1,16 +1,26 @@
 server:
-  port: 7077
+  port: 7078
+
 spring:
   application:
     name: sszh-server-order
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: SSZH-SERVER-CONFIG
+      profile: test
+  #Spring Boot Admin 健康监测服务
   boot:
     admin:
       client:
-        url: http://127.0.0.1:9000  #申明SBA的地址
+        url: http://localhost:9880  #申明SBA的地址
+
+#spring could 为服务注册中心
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://user:123456@127.0.0.1:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
   instance:
     prefer-ip-address: true                                       #将IP注册到服务注册中心
 
@@ -20,3 +30,6 @@ management:
     web:
       exposure:
         include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
