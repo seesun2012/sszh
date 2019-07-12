@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: sszh-server-config
+    name: config-server
   profiles:
     active: native                      #从本地读取：native   从SVN中提取：subversion
   cloud:

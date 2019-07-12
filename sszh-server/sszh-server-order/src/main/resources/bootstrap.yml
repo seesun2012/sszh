@@ -6,25 +6,23 @@ spring:
     name: sszh-server-order
   cloud:
     config:
-      discovery:
-        enabled: true
-        service-id: SSZH-SERVER-CONFIG
-      profile: test
-  #Spring Boot Admin ½¡¿µ¼à²â·şÎñ
+      uri: http://localhost:7076/
+      profile: dev
+  #Spring Boot Admin å¥åº·ç›‘æµ‹æœåŠ¡
   boot:
     admin:
       client:
-        url: http://localhost:9880  #ÉêÃ÷SBAµÄµØÖ·
+        url: http://localhost:9880  #ç”³æ˜SBAçš„åœ°å€
 
-#spring could Îª·şÎñ×¢²áÖĞĞÄ
+#spring could ä¸ºæœåŠ¡æ³¨å†Œä¸­å¿ƒ
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://user:123456@localhost:7075/eureka/      #·şÎñ×¢²áÖĞĞÅµØÖ·£¬º¬ÓĞBASICÈÏÖ¤µÄÓÃ»§ÃûºÍÃÜÂë
+      defaultZone: http://user:123456@localhost:7075/eureka/      #æœåŠ¡æ³¨å†Œä¸­ä¿¡åœ°å€ï¼Œå«æœ‰BASICè®¤è¯çš„ç”¨æˆ·åå’Œå¯†ç 
   instance:
-    prefer-ip-address: true                                       #½«IP×¢²áµ½·şÎñ×¢²áÖĞĞÄ
+    prefer-ip-address: true                                       #å°†IPæ³¨å†Œåˆ°æœåŠ¡æ³¨å†Œä¸­å¿ƒ
 
-#·Å¿ªËùÓĞ½Úµã
+#æ”¾å¼€æ‰€æœ‰èŠ‚ç‚¹
 management:
   endpoints:
     web:

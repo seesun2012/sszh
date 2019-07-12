@@ -4,6 +4,7 @@ import com.sszh.server.sso.bean.User;
 import com.sszh.server.sso.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,14 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * 用户主控制器
  */
+@RefreshScope
 @RestController
 public class UserController {
 
+    @Value("${configService.name}")
+    private String hosts;
+
     @Autowired
     private UserService userService;
-
-    @Value("${unionpay.redis.hosts}")
-    private String hosts;
 
     /**
      * 查询用户信息

@@ -12,9 +12,8 @@ public class SystemController {
     @Value("${server.port}")
     private String port;
 
-    @Value("${unionpay.redis.hosts}")
+    @Value("${configService.name}")
     private String hosts;
-
 
     /**
      * 获取端口配置

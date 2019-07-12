@@ -15,8 +15,10 @@ spring:
     name: sszh-server-sso
   cloud:
     config:
-      uri: http://localhost:7076/
+      uri: http://192.168.74.1:7076/
       profile: dev
+      label: service
+      name: ${spring.application.name},hi
   #Spring Boot Admin 健康监测服务
   boot:
     admin:
