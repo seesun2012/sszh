@@ -1,16 +1,18 @@
+#参照配置：https://blog.csdn.net/zzhuan_1/article/details/84560438
+
 server:
   port: 7076
 
 spring:
   application:
-    name: config-server
+    name: sszh-server-config
   profiles:
     active: native                      #从本地读取：native   从SVN中提取：subversion
   cloud:
     config:
       server:
         native:
-          search-locations: classpath:/config/
+          search-locations: classpath:config/,classpath:properties/
 
 #spring could 为服务注册中心
 eureka:
@@ -21,3 +23,6 @@ eureka:
     fetchRegistry: true
     service-url:
       defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+
+
+

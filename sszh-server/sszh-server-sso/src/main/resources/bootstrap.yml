@@ -15,10 +15,13 @@ spring:
     name: sszh-server-sso
   cloud:
     config:
+      discovery:
+        service-id: SSZH-SERVER-CONFIG                            #指定从注册中心读取的服务ID（重点），这里是eureka注册之后的名称（无特殊配置必须大写）
+        enabled: true
       uri: http://192.168.74.1:7076/
       profile: dev
-      label: service
-      name: ${spring.application.name},hi
+      label: master
+      name: service-system,service-redis,service-database
   #Spring Boot Admin 健康监测服务
   boot:
     admin:

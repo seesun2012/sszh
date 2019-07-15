@@ -1,6 +1,9 @@
 package com.sszh.server.sso.controller;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.sszh.server.sso.config.DataBaseConfig;
+import com.sszh.server.sso.config.RedisConfig;
+import com.sszh.server.sso.config.SystemConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -9,11 +12,14 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class SystemController {
 
-    @Value("${server.port}")
-    private String port;
+    @Autowired
+    private SystemConfig systemConfig;
 
-    @Value("${configService.name}")
-    private String hosts;
+    @Autowired
+    private DataBaseConfig dataBaseConfig;
+
+    @Autowired
+    private RedisConfig redisConfig;
 
     /**
      * 获取端口配置
@@ -21,8 +27,7 @@ public class SystemController {
     @RequestMapping(value = "/port", method = RequestMethod.GET)
     @ResponseBody
     public String home(@RequestParam String name) {
-        String str = hosts;
-        return "hi " + name + ",i am from port:" + port + ":" + str;
+        return "hi " + name + ",i am from port:" + systemConfig.port;
     }
 
 }
