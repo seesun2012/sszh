@@ -21,13 +21,60 @@
     </properties>
 
     <dependencies>
-        <!--sszh公共工具类-->
+        <!-- ================================== 项目相关依赖 ==================================-->
+        <!-- sszh公共工具类-->
         <dependency>
             <groupId>com.sszh</groupId>
             <artifactId>sszh-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
+        <!-- ================================== 常用组件 ==================================-->
+        <!-- Mysql Driver -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- spring boot Mybatis  -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
+        </dependency>
+        <!-- 开源分页插件地址:http://git.oschina.net/free/Mybatis_PageHelper -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.jsqlparser</groupId>
+            <artifactId>jsqlparser</artifactId>
+        </dependency>
+        <!-- 使用数据源 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+        </dependency>
+        <!--log4j 日志-->
+        <!--<dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>-->
+
+        <!-- ================================== LCN分布式事务相关依赖（客户端） ==================================-->
         <!-- LCN分布式事务：TC引入pom依赖 -->
         <dependency>
             <groupId>com.codingapi.txlcn</groupId>
@@ -46,6 +93,7 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- ================================== Spring Could （微服务）相关依赖 ==================================-->
         <!--Spring Cloud Config 客户端依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -61,42 +109,32 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!-- Eureka客户端模块 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
-
         <!-- 健康监控客户端 -->
         <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-client</artifactId>
             <version>${spring.boot.admin.version}</version>
         </dependency>
-
         <!--Feign模块-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <!-- tomcat支持 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
         </dependency>
 
     </dependencies>
