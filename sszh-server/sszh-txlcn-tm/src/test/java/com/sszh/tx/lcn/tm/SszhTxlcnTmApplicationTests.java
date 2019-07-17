@@ -1,4 +1,4 @@
-//package com.sszh.tx.manager;
+//package com.sszh.tx.lcn.tm;
 //
 //import org.junit.Test;
 //import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@
 //
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
-//public class SszhTxManagerApplicationTests {
+//public class SszhTxlcnTmApplicationTests {
 //
 //    @Test
 //    public void contextLoads() {

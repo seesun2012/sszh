@@ -1,18 +1,23 @@
+#####################################################################################################
+#spring could 服务器配置
 server:
   port: 7077
 
-#spring could 为服务注册中心
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
-  instance:
-    prefer-ip-address: true                                       #将IP注册到服务注册中心
-
-
+#####################################################################################################
+# spring 属性配置
 spring:
+  # 服务名称
   application:
     name: sszh-server-sso
+  # mysql 属性配置
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/txlcn-demo
+    username: root
+    password: zsy0755
+    hikari:
+      maximum-pool-size: 20
+  # spring cloud 配置中心
   cloud:
     config:
       discovery:
@@ -27,8 +32,28 @@ spring:
     admin:
       client:
         url: http://localhost:9880  #申明SBA的地址
+  # main主程序配置
+  main:
+    allow-bean-definition-overriding: true                        #当遇到同样名字的时候，是否允许覆盖注册
 
-#放开所有节点
+#####################################################################################################
+#spring could 注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+
+#####################################################################################################
+# mybatis 属性配置
+mybatis:
+  configuration:
+    use-generated-keys: true
+    map-underscore-to-camel-case: true
+
+#####################################################################################################
+# spring cloud 客户端放开所有节点
 management:
   endpoints:
     web:
@@ -37,3 +62,16 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+
+#####################################################################################################
+# 关闭Ribbon的重试机制（如果有必要）
+ribbon:
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+#####################################################################################################
+## tx-manager 配置
+tx-lcn:
+  client:
+    manager-address: 127.0.0.1:8070

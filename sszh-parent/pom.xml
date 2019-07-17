@@ -22,12 +22,26 @@
         <spring.boot.admin.version>2.1.0</spring.boot.admin.version>
         <spring-cloud.version>Finchley.SR2</spring-cloud.version>
         <!-- LCN分布式事务版本 -->
-        <lcn.last.version>4.1.0</lcn.last.version>
+        <lcn.last.version>5.0.2.RELEASE</lcn.last.version>
+        <lombok.version>1.18.0</lombok.version>
     </properties>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
     <dependencyManagement>
         <dependencies>
+            <!-- Mysql Driver -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.40</version>
+            </dependency>
             <!--Spring could-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -47,29 +61,35 @@
                 <artifactId>spring-boot-admin-starter-client</artifactId>
                 <version>${spring.boot.admin.version}</version>
             </dependency>
-            <!-- LCN分布式事务相关依赖 -->
+
+            <!-- LCN分布式事务：TM引入pom依赖 -->
             <dependency>
-                <groupId>com.codingapi</groupId>
-                <artifactId>transaction-springcloud</artifactId>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tm</artifactId>
                 <version>${lcn.last.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
+            </dependency>
+            <!-- LCN分布式事务：TC引入pom依赖 -->
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tc</artifactId>
+                <version>${lcn.last.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.codingapi</groupId>
-                <artifactId>tx-plugins-db</artifactId>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-txmsg-netty</artifactId>
                 <version>${lcn.last.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.slf4j</groupId>
-                        <artifactId>*</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
+            <dependency>
+                <groupId>org.txlcn.demo</groupId>
+                <artifactId>txlcn-demo-common</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

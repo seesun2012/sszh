@@ -1,7 +1,7 @@
 #Redis配置
 unionpay:
   redis:
-    hosts: 172.18.75.66:6379
+    hosts: 127.0.0.1:6379
     maxIdle: 50
     maxWait: 1000
     maxTotal: 100

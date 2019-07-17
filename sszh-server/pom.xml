@@ -17,7 +17,10 @@
 
     <modules>
         <module>sszh-server-eureka</module>
+        <module>sszh-server-config</module>
         <module>sszh-server-sso</module>
+        <module>sszh-server-order</module>
+        <module>sszh-server-boot-admin</module>
     </modules>
 
     <build>
