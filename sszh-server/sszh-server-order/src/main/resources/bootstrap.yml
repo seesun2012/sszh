@@ -12,7 +12,7 @@ spring:
   # mysql 属性配置
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/txlcn-demo
+    url: jdbc:mysql://127.0.0.1:3306/db_sszh
     username: root
     password: zsy0755
     hikari:
