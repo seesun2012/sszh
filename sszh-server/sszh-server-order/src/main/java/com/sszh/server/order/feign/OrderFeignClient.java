@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "SSZH-SERVER-ORDER", fallbackFactory = FeignClientFallbackFactory.class)
+@FeignClient(name = "SSZH-SERVER-ORDER"/*, fallbackFactory = FeignClientFallbackFactory.class*/)
 public interface OrderFeignClient {
 
     @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
