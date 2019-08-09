@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.1.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sszh</groupId>
@@ -20,25 +20,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring.boot.admin.version>2.1.0</spring.boot.admin.version>
-        <spring-cloud.version>Finchley.SR2</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR1	</spring-cloud.version>
         <!-- LCN分布式事务版本 -->
         <lcn.last.version>5.0.2.RELEASE</lcn.last.version>
         <lombok.version>1.18.0</lombok.version>
     </properties>
 
-
-    <dependencies>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <!-- 与数据库操作相关的依赖 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-            <!--版本与springboot一致-->
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
