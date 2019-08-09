@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements IUserService {
 
     @Autowired
-    protected UserMapper userMapper;
+    private UserMapper userMapper;
 
     @Override
     public UserBean selectByPrimaryKey(Long id) {

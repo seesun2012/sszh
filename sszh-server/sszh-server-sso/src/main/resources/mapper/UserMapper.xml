@@ -18,7 +18,7 @@
   </select>
 
   <insert id="insertSelective" parameterType="com.sszh.server.sso.entity.UserBean">
-    insert into sys_voucher
+    insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         ID,
