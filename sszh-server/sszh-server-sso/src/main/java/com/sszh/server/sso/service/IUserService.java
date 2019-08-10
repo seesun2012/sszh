@@ -1,6 +1,7 @@
 package com.sszh.server.sso.service;
 
-import com.sszh.server.sso.entity.UserBean;
+
+import com.sszh.server.sso.api.entity.UserBean;
 
 /**
  * 用户主业务处理类

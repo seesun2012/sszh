@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sszh.server.sso.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.sszh.server.sso.entity.UserBean" >
+  <resultMap id="BaseResultMap" type="com.sszh.server.sso.api.entity.UserBean" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
@@ -17,7 +17,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
-  <insert id="insertSelective" parameterType="com.sszh.server.sso.entity.UserBean">
+  <insert id="insertSelective" parameterType="com.sszh.server.sso.api.entity.UserBean">
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

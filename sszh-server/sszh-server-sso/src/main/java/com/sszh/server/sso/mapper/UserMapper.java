@@ -1,6 +1,6 @@
 package com.sszh.server.sso.mapper;
 
-import com.sszh.server.sso.entity.UserBean;
+import com.sszh.server.sso.api.entity.UserBean;
 
 public interface UserMapper{
 

@@ -26,7 +26,7 @@ spring:
       uri: http://127.0.0.1:7076/
       profile: dev
       label: master
-      name: ${spring.application.name},service-system,service-redis,service-database
+      name: ${spring.application.name},service-system,service-redis,service-database,service-messages
   #Spring Boot Admin 健康监测服务
   boot:
     admin:
@@ -50,7 +50,7 @@ eureka:
 mybatis:
   type-aliases-package: com.sszh.server.sso.entity                #它一般对应我们的实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。多个package之间可以用逗号或者分号等来进行分隔（value的值一定要是包的全）
   mapper-locations: classpath:mapper/*.xml                        #它表示我们的Mapper文件存放的位置，当我们的Mapper文件跟对应的Mapper接口处于同一位置的时候可以不用指定该属性的值
-#  # config-location: classpath:spring/mybatis-config.xml          #用于指定Mybatis的配置文件位置。如果指定了该属性，那么会以该配置文件的内容作为配置信息构建对应的SqlSessionFactoryBuilder，但是后续属性指定的内容会覆盖该配置文件里面指定的对应内容
+#  # config-location: classpath:spring/mybatis-config.xml         #用于指定Mybatis的配置文件位置。如果指定了该属性，那么会以该配置文件的内容作为配置信息构建对应的SqlSessionFactoryBuilder，但是后续属性指定的内容会覆盖该配置文件里面指定的对应内容
 #  configuration:
 #    use-generated-keys: true
 #    map-underscore-to-camel-case: true
@@ -68,6 +68,9 @@ management:
 #####################################################################################################
 # 关闭Ribbon的重试机制（如果有必要）
 ribbon:
+  loadbalancer:
+    dtx:
+      enabled: false
   MaxAutoRetriesNextServer: 0
   ReadTimeout: 5000
   ConnectTimeout: 5000
@@ -77,3 +80,5 @@ ribbon:
 tx-lcn:
   client:
     manager-address: 127.0.0.1:8070
+  logger:
+    enabled: true

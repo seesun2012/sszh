@@ -1,34 +1,38 @@
 package com.sszh.server.order.controller;
 
-import com.sszh.server.order.bean.User;
-import com.sszh.server.order.feign.OrderFeignClient;
+
+import com.alibaba.fastjson.JSONObject;
+import com.sszh.server.order.api.entity.OrderBean;
+import com.sszh.server.order.api.feign.interfaces.OrderClient;
+import com.sszh.server.order.service.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 订单-主控制器
  */
 @RestController
-public class OrderController {
+@RequestMapping("/order/order")
+public class OrderController implements OrderClient {
 
-    @Autowired
-    private OrderFeignClient orderFeignClient;
 
-    @GetMapping("/order/{id}")
-    public User findById(@PathVariable Long id) {
-        User user = this.orderFeignClient.findById(id);
-        return user;
+    @Resource
+    private IOrderService orderService;
+
+    
+    @RequestMapping(value = "/insertSelective", method = RequestMethod.POST)
+    public Integer insertSelective(@RequestBody JSONObject json) throws Exception {
+        OrderBean record = JSONObject.toJavaObject(json, OrderBean.class);
+        int i = orderService.insertSelective(record);
+        return i;
     }
 
 
-    @GetMapping("/order/getOrderStr")
-    @ResponseBody
-    public String getOrderStr(String id) {
-        return "ASLFKA:" + id;
-    }
-
+    
 
 }

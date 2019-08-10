@@ -1,5 +1,4 @@
 #参照配置：https://blog.csdn.net/zzhuan_1/article/details/84560438
-
 server:
   port: 7076
 
