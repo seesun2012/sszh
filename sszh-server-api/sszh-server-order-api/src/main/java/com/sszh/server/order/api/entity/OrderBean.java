@@ -1,6 +1,6 @@
 package com.sszh.server.order.api.entity;
 
-import com.sszh.common.entity.CommonEntity;
+import com.sszh.core.entity.CommonEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

@@ -4,11 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-web</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>sszh-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>sszh-web-wechat-applet</artifactId>
     <name>sszh-web-wechat-applet</name>
     <description>sszh-web-wechat-applet-微信小程序</description>

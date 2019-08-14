@@ -4,13 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-server</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>sszh-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sszh</groupId>
     <artifactId>sszh-server-order</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>sszh-server-order</name>
     <description>order</description>
 
@@ -22,21 +20,17 @@
 
     <dependencies>
         <!-- ================================== 项目相关依赖 ==================================-->
-        <!-- sszh公共工具类-->
-        <dependency>
-            <groupId>com.sszh</groupId>
-            <artifactId>sszh-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+        <!-- sszh-server-sso-api用户接口jar-->
         <dependency>
             <groupId>com.sszh</groupId>
             <artifactId>sszh-server-sso-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <!-- sszh-server-order-api订单接口jar-->
         <dependency>
             <groupId>com.sszh</groupId>
             <artifactId>sszh-server-order-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
 
         <!-- ================================== 常用组件 ==================================-->

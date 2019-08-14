@@ -5,12 +5,10 @@
     <parent>
         <groupId>com.sszh</groupId>
         <artifactId>sszh-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sszh</groupId>
     <artifactId>sszh-txlcn-tm</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>sszh-txlcn-tm</name>
     <description>LCN分布式事务：txlcn-tm</description>
 
@@ -18,6 +16,11 @@
         <dependency>
             <groupId>com.codingapi.txlcn</groupId>
             <artifactId>txlcn-tm</artifactId>
+        </dependency>
+        <!--spring cloud 客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
 

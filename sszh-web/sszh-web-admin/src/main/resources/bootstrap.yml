@@ -1,0 +1,84 @@
+#####################################################################################################
+#spring could 服务器配置
+server:
+  port: 8080
+
+#####################################################################################################
+# spring 属性配置
+spring:
+  # 服务名称
+  application:
+    name: sszh-web-admin
+  # spring cloud 配置中心
+  cloud:
+    config:
+      discovery:
+        service-id: SSZH-SERVER-CONFIG                            #指定从注册中心读取的服务ID（重点），这里是eureka注册之后的名称（无特殊配置必须大写）
+        enabled: true
+      uri: http://127.0.0.1:7076/
+      profile: dev
+      label: master
+      name: ${spring.application.name},service-system,service-redis,service-database,service-messages
+  #Spring Boot Admin 健康监测服务
+  boot:
+    admin:
+      client:
+        url: http://localhost:9880  #申明SBA的地址
+  # main主程序配置
+  main:
+    allow-bean-definition-overriding: true                        #当遇到同样名字的时候，是否允许覆盖注册
+  # redis缓存
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 1000
+    password: zsy0755
+  # springMVC配置
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  # selvlet配置
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  jackson:
+    time-zone: GMT+8
+
+#####################################################################################################
+#spring could 注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+
+#####################################################################################################
+# spring cloud 客户端放开所有节点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+
+#####################################################################################################
+# 关闭Ribbon的重试机制（如果有必要）
+ribbon:
+  loadbalancer:
+    dtx:
+      enabled: false
+  MaxAutoRetriesNextServer: 0
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+
+#####################################################################################################
+# 系统配置
+system:
+  isFinalClient: true
+  unFilterFile: /css/,/js/,/script/,/html/,/image/,/actuator/,/login/,.css,.js,.ico
+  unFilterUrl: /login,/system/getCheckCode,/system/syncSystemTime,/actuator

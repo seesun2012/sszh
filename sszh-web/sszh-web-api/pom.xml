@@ -5,10 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-web</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>sszh-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>sszh-web-api</artifactId>
     <name>sszh-web-api</name>
     <description>sszh-web-api-对外网关服务器</description>

@@ -5,13 +5,11 @@
     <!-- 引入父工程的spring boot依赖 -->
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-server</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <artifactId>sszh-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sszh</groupId>
     <artifactId>sszh-server-eureka</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <description>spring could 注册中心</description>
 
 

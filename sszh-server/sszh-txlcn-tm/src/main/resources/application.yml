@@ -1,0 +1,14 @@
+server:
+  port: 7970
+spring:
+  application:
+    name: sszh-txlcn-tm
+
+#spring could 注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

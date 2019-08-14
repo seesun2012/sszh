@@ -13,15 +13,12 @@ spring:
         native:
           search-locations: classpath:config/,classpath:properties/
 
-#spring could 为服务注册中心
+#####################################################################################################
+#spring could 注册中心配置
 eureka:
-  instance:
-    prefer-ip-address:  true
   client:
-    registerWithEureka: true
-    fetchRegistry: true
-    service-url:
+    serviceUrl:
       defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
-
-
-
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
