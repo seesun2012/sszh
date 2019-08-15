@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100036
 File Encoding         : 65001
 
-Date: 2019-08-10 21:05:23
+Date: 2019-08-15 19:27:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,16 +54,19 @@ CREATE TABLE `t_order` (
 INSERT INTO `t_order` VALUES ('01U64GmsjGDqSeHmVFc', 'SH1565434757256', '88888.88');
 
 -- ----------------------------
--- Table structure for t_user
+-- Table structure for t_sys_user
 -- ----------------------------
-DROP TABLE IF EXISTS `t_user`;
-CREATE TABLE `t_user` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+DROP TABLE IF EXISTS `t_sys_user`;
+CREATE TABLE `t_sys_user` (
+  `id` int(11) NOT NULL COMMENT '主键ID',
+  `account` varchar(255) NOT NULL COMMENT '登陆账号',
+  `user_name` varchar(255) NOT NULL COMMENT '用户名',
+  `pass_word` varchar(255) NOT NULL COMMENT '密码：（由原始密码+随机串组合）MD5值组合',
+  `ran_str` varchar(255) NOT NULL COMMENT '随机字符串：由创建密码时随机生成的UUID',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
--- Records of t_user
+-- Records of t_sys_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1000', '张三');
+INSERT INTO `t_sys_user` VALUES ('1000', 'admin', '张三', '123456', '2f514dd792b248f8956cde24e12236dc');
