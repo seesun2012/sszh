@@ -24,9 +24,9 @@ public class UserCache extends AdminBaseCache {
     public UserBean getUserSessionInfo(String sessionId) {
         return basecache.getJson(USER_SESSION_INFO_KEY + sessionId, UserBean.class);
     }
-    //录入登陆信息
+    //录入登陆信息（半个小时有效）
     public void setUserSessionInfo(UserBean userBean, String sessionId) {
-        basecache.setJson(USER_SESSION_INFO_KEY + sessionId, userBean, new ExpireTime(10L));
+        basecache.setJson(USER_SESSION_INFO_KEY + sessionId, userBean, new ExpireTime(1800L));
     }
     //踢出异地登陆
     public void delUserSessionInfo(String sessionId) {

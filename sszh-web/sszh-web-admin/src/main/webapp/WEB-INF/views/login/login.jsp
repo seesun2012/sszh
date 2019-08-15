@@ -189,7 +189,7 @@
     <div class="layadmin-user-login">
         <div class="layadmin-user-login-main">
             <div class="layadmin-user-login-box layadmin-user-login-header">
-                <h2><%--XXXX-运营管理系统--%></h2>
+                <h2>XXXX-运营管理系统</h2>
                 <p>系统当前时间：<span class="system_time"></span></p>
             </div>
             <form class="layadmin-user-login-box layadmin-user-login-body layui-form">
