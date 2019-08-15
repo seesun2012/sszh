@@ -74,9 +74,9 @@ public class LoginController extends BaseController {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         //删除缓存
-        Object sesionStr = httpRequest.getSession().getAttribute("userInfo");                        //获取用户信息
+        Object sesionStr = httpRequest.getSession().getAttribute("userInfo");                           //获取用户信息
         httpRequest.getSession().setAttribute("userInfo", null);
-        sesionStr = httpRequest.getSession().getAttribute("userInfo");                        //获取用户信息
+        sesionStr = httpRequest.getSession().getAttribute("userInfo");                                  //获取用户信息
         httpResponse.sendRedirect(httpRequest.getContextPath() + "/login");
     }
 
