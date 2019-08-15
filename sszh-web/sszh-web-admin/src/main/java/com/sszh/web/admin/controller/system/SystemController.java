@@ -1,12 +1,13 @@
 package com.sszh.web.admin.controller.system;
 
 import com.sszh.core.result.JSONResult;
-import com.sszh.web.admin.cache.AdminBaseCache;
 import com.sszh.web.admin.cache.AdminCacheFactory;
 import com.sszh.web.admin.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
