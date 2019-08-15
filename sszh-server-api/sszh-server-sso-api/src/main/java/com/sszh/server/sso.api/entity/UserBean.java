@@ -17,50 +17,53 @@ import lombok.experimental.Accessors;
 @Builder
 public class UserBean extends CommonEntity {
 
-    private Long id;
-    private String username;
-    private String name;
-    private Integer age;
-    private Double balance;
+    private static final long serialVersionUID = 8256603124539536859L;
+    
+    private Long id;                //id主键
+    private String account;         //登陆账号
+    private String userName;        //用户名
+    private String passWord;        //密码
+    private String ranStr;          //随机字符串（用于加密密码）
 
     public Long getId() {
-        return this.id;
+        return id;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getAccount() {
+        return account;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public String getName() {
-        return this.name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public Integer getAge() {
-        return this.age;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public Double getBalance() {
-        return this.balance;
+    public String getRanStr() {
+        return ranStr;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setRanStr(String ranStr) {
+        this.ranStr = ranStr;
     }
-
+    
+    
 }

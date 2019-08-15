@@ -14,4 +14,7 @@ public interface IUserService {
     //根据用户对象新增用户信息
     Integer insertSelective(UserBean record);
 
+    //登陆查询
+    UserBean loginQuery(String account);
+    
 }

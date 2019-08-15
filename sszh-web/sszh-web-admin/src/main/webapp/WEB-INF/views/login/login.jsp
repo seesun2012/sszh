@@ -195,11 +195,11 @@
             <form class="layadmin-user-login-box layadmin-user-login-body layui-form">
                 <div class="layui-form-item">
                     <label class="layadmin-user-login-icon layui-icon layui-icon-username"></label>
-                    <input type="text" name="userName" value="admin" lay-verify="required" placeholder="用户名" class="layui-input">
+                    <input type="text" name="account" value="" lay-verify="required" placeholder="用户名" class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <label class="layadmin-user-login-icon layui-icon layui-icon-password"></label>
-                    <input type="password" name="passWord" value="123456" lay-verify="required" placeholder="密码" class="layui-input">
+                    <input type="password" name="passWord" value="" lay-verify="required" placeholder="密码" class="layui-input">
                 </div>
                 <div class="layui-form-item">
                     <div class="layui-row">
@@ -287,14 +287,13 @@
             for (var item in formData) {
                 formObject[formData[item].name] = formData[item].value;
             }
-            console.log(formObject);
             var loadFlash = layer.load(0, {shade: [0.7, '#393D49']}, {shadeClose: true}); //0代表加载的风格，支持0-2
             $.ajax({
                 url: "login/doLogin",
                 type: "POST",
                 async: false,
                 data: {
-                    userName : formObject.userName,
+                    account : formObject.account,
                     passWord : formObject.passWord,
                     vCode : formObject.vCode
                 },

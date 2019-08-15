@@ -1,7 +1,10 @@
 package com.sszh.web.admin.controller.system;
 
 import com.sszh.core.result.JSONResult;
+import com.sszh.web.admin.cache.AdminBaseCache;
+import com.sszh.web.admin.cache.AdminCacheFactory;
 import com.sszh.web.admin.controller.BaseController;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +24,8 @@ import java.util.Random;
 @RequestMapping("/system")
 public class SystemController extends BaseController {
     
-    
+    @Autowired
+    private AdminCacheFactory adminCacheFactory;
 
     /**
      * 获取当前服务器时间
@@ -36,15 +40,15 @@ public class SystemController extends BaseController {
 
     /**
      * 获取图片验证码（登陆）
-     * @param req
-     * @param resp
+     * @param request
+     * @param response
      * @throws Exception
      */
     @RequestMapping(value = "/getCheckCode", method = RequestMethod.GET)
-    public void getCheckCode(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    public void getCheckCode(HttpServletRequest request, HttpServletResponse response) throws Exception {
         // 设置响应头 Content-type类型  
-        resp.setContentType("image/jpeg");
-        OutputStream os = resp.getOutputStream();
+        response.setContentType("image/jpeg");
+        OutputStream os = response.getOutputStream();
         int width = 83, height = 30;
         // 建立指定宽、高和BufferedImage对象  
         BufferedImage image = new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
@@ -56,14 +60,14 @@ public class SystemController extends BaseController {
 
         char[] ch = "abcdefghjkmnpqrstuvwxyz2345678901".toCharArray(); // 随即产生的字符串 不包括 i l(小写L) o（小写O） 1（数字1）0(数字0)  
         int length = ch.length; // 随即字符串的长度  
-        String sRand = ""; // 保存随即产生的字符串  
+        String vCode = ""; // 保存随即产生的字符串  
         Random random = new Random();
         for (int i = 0; i < 4; i++) {
             // 设置字体  
             g.setFont(getFont());
             // 随即生成0-9的数字  
             String rand = Character.toString(ch[random.nextInt(length)]);
-            sRand += rand;
+            vCode += rand;
             // 设置随机颜色  
             g.setColor(new Color(random.nextInt(255), random.nextInt(255), random.nextInt(255)));
             g.drawString(rand, 20 * i + 6, 25);
@@ -78,9 +82,8 @@ public class SystemController extends BaseController {
         g.setColor(c);
         // 释放此图形的上下文以及它使用的所有系统资源。
         g.dispose();
-
-        //将验证码记录到session  
-        req.getSession().setAttribute("safecode", sRand);
+        //将验证码记录到REDIS
+        adminCacheFactory.getSystemCache().setYanZhengMa(request.getSession().getId(), vCode);
         // 输出图像到页面  
         ImageIO.write(image, "JPEG", os);
     }

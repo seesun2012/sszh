@@ -19,14 +19,21 @@ public class UserController implements UserClient {
     private IUserService userService;
 
     /**
-     * 查询用户信息
+     * 登陆查询
+     */
+    @RequestMapping(value = "/loginQuery", method = RequestMethod.POST)
+    public UserBean loginQuery(@RequestParam(name = "account") String account) throws Exception {
+        return userService.loginQuery(account);
+    }
+
+    /**
+     * 根据用户ID查询用户信息
      * @param id    用户ID
      */
     @Override
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.GET)
     public UserBean selectByPrimaryKey(@RequestParam(name = "id") Long id) throws Exception {
-        UserBean user = userService.selectByPrimaryKey(id);
-        return user;
+        return userService.selectByPrimaryKey(id);
     }
 
     /**
@@ -37,7 +44,7 @@ public class UserController implements UserClient {
     public Integer insertSelective(@RequestBody UserBean user) throws Exception {
         if (null == user) throw new Exception("user对象不能为空");
         if (null == user.getId()) throw new Exception("id不能为空");
-        if (null == user.getName()) throw new Exception("name不能为空");
+        if (null == user.getUserName()) throw new Exception("name不能为空");
         int i = userService.insertSelective(user);
         return i;
     }

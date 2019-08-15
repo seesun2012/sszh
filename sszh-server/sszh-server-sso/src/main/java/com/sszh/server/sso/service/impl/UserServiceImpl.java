@@ -36,4 +36,9 @@ public class UserServiceImpl implements IUserService {
         return i;
     }
 
+    @Override
+    public UserBean loginQuery(String account) {
+        return userMapper.loginQuery(account);
+    }
+
 }

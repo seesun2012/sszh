@@ -8,4 +8,6 @@ public interface UserMapper{
 
     int insertSelective(UserBean record);
 
+    UserBean loginQuery(String account);
+    
 }

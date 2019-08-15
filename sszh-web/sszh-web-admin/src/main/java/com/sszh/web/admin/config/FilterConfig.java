@@ -1,6 +1,8 @@
 package com.sszh.web.admin.config;
 
+import com.sszh.web.admin.cache.AdminCacheFactory;
 import com.sszh.web.admin.filter.LoginFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,9 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class FilterConfig {
+
+    @Autowired
+    private AdminCacheFactory adminCacheFactory;
 
     // 不需要过滤的文件（判断是否包含）
     @Value("${system.unFilterFile:/css/,/js/,/script/,/html/,/image/,.css,.js,.ico}")
@@ -27,7 +32,7 @@ public class FilterConfig {
     @Bean
     public FilterRegistrationBean registFilter() {
         FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(new LoginFilter(unFilterUrl, unFilterFolder));
+        registration.setFilter(new LoginFilter(unFilterUrl, unFilterFolder, adminCacheFactory));
         registration.addUrlPatterns("/*");
         registration.setName("loginFilter");
         registration.setOrder(1);

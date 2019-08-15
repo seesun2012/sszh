@@ -25,7 +25,6 @@ if (!(typeof jQuery == 'undefined')) {
         //扩展增强处理
         var _opt = $.extend(opt, {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                debugger;
                 //错误方法增强处理
                 if ('TIMEOUT' == XMLHttpRequest.getResponseHeader('SESSIONS_TATUS')) {
                     window.location.href = XMLHttpRequest.getResponseHeader('content_path');

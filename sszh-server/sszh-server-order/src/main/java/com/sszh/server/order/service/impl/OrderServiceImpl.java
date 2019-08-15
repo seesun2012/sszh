@@ -33,7 +33,7 @@ public class OrderServiceImpl implements IOrderService {
         if (null == record) throw new RuntimeException("order对象不能为空");
         UserBean user = new UserBean();
         user.setId(1001L);
-        user.setName("张三");
+        user.setUserName("张三");
         int ui = userClient.insertSelective(user);
         int oi = orderMapper.insertSelective(record);
         throw new RuntimeException("分布式事务测试order");

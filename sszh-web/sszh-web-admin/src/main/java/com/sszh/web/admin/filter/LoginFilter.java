@@ -4,9 +4,12 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.sszh.common.util.string.StringUtil;
 import com.sszh.server.sso.api.entity.UserBean;
+import com.sszh.web.admin.cache.AdminBaseCache;
+import com.sszh.web.admin.cache.AdminCacheFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -51,16 +54,17 @@ public class LoginFilter implements Filter {
 
     private static final Logger logger = LoggerFactory.getLogger(LoginFilter.class);
     
+    private String[] unFilterUrl;
+    private String[] unFilterFolder;
+    private AdminCacheFactory adminCacheFactory;
     private static final Set<String> UN_FILTER_URL = new HashSet<>();
     private static final Set<String> UN_FILTER_FOLDER = new HashSet<>();
 
-    private String[] unFilterUrl;
-    private String[] unFilterFolder;
-
     // 构造函数获取配置
-    public LoginFilter(String[] unFilterUrl, String[] unFilterFolder) {
+    public LoginFilter(String[] unFilterUrl, String[] unFilterFolder, AdminCacheFactory adminCacheFactory) {
         this.unFilterUrl = unFilterUrl;
         this.unFilterFolder = unFilterFolder;
+        this.adminCacheFactory = adminCacheFactory;
     }
 
     @Override
@@ -83,28 +87,24 @@ public class LoginFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String url = httpRequest.getRequestURI();
-        // 是否登陆
-        HttpSession session = httpRequest.getSession();                             //初始化Session
-        Object sesionStr = session.getAttribute("userInfo");                        //获取用户信息
-        UserBean user = null;
-        if (null != sesionStr) {
-            user = (UserBean) sesionStr;
+        for (String str : UN_FILTER_URL) {
+            if (str.equals(url)){
+                chain.doFilter(request, response);
+                return;
+            }
         }
+        for (String str : UN_FILTER_FOLDER) {
+            if (url.lastIndexOf(str) >= 0){
+                chain.doFilter(request, response);
+                return;
+            }
+        }
+        // 是否登陆
+        String sessionId = httpRequest.getSession().getId();                                            //获取sessionId
+        UserBean user = adminCacheFactory.getUserCache().getUserSessionInfo(sessionId);                 //获取用户信息
         if (null != user && null != user.getId()) {
             chain.doFilter(request, response);
         } else {
-            for (String str : UN_FILTER_URL) {
-                if (str.equals(url)){
-                    chain.doFilter(request, response);
-                    return;
-                }
-            }
-            for (String str : UN_FILTER_FOLDER) {
-                if (url.lastIndexOf(str) >= 0){
-                    chain.doFilter(request, response);
-                    return;
-                }
-            }
             logger.info("--------------------->过滤器：请求地址" + url);
             String requestedWith = httpRequest.getHeader("X-Requested-With");               // 如果是Ajax请求，特殊处理
             if (StringUtils.isNotEmpty(requestedWith) && StringUtils.equals(requestedWith, "XMLHttpRequest")) {
