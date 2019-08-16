@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
-import com.sszh.cache.util.ExpireTime;
+import com.sszh.common.util.date.ExpireTime;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

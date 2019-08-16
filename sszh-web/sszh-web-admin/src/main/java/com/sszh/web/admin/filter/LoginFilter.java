@@ -1,6 +1,6 @@
 package com.sszh.web.admin.filter;
 
-import com.sszh.server.sso.api.entity.UserBean;
+import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.web.admin.cache.AdminCacheFactory;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
@@ -95,7 +95,7 @@ public class LoginFilter implements Filter {
         }
         // 是否登陆
         String sessionId = httpRequest.getSession().getId();                                            //获取sessionId
-        UserBean user = adminCacheFactory.getUserCache().getUserSessionInfo(sessionId);                 //获取用户信息
+        SysUserEntity user = adminCacheFactory.getUserCache().getUserSessionInfo(sessionId);                 //获取用户信息
         if (null != user && null != user.getId()) {
             chain.doFilter(request, response);
         } else {

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!-- 引入配置文件 -->
+    <properties resource="properties/sso/application.properties"/>
+
+    <!-- mysql-connector-java-5.1.46.jar的绝对路径 -->
+    <classPathEntry location="E:/JavaProject/sszh/sszh-common/sszh-util-mybatis-generator/src/main/resources/lib/mysql-connector-java-5.1.46.jar"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        
+        <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖 -->
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化XML代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!-- beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--生成Equals和HashCode方法-->
+        <plugin type="com.sszh.mybatis.example.dao.MyEqualsHashCodePlugin"/>
+        
+        <!-- import mapper -->
+        <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+            <property name="fileName" value="GeneratedMapperConfig.xml"/>
+            <property name="targetPackage" value="mapper"/>
+        </plugin>
+
+        <!-- 是否去除自动生成的注释 -->
+        <commentGenerator type="com.sszh.mybatis.example.internal.CustomCommentGenerator">
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="${driverClass}" connectionURL="${connectionURL}" userId="${userName}" password="${password}">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!-- java类型配置 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--entity.java存放位置-->
+        <javaModelGenerator targetPackage="${targetPackage}.api.entity" targetProject="${targetProject}">
+            <!-- for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter； -->
+            <property name="constructorBased" value="false"/>
+            <!-- for MyBatis3 / MyBatis3Simple 是否创建一个不可变的类，如果为true，那么MBG会创建一个没有setter方法的类，取而代之的是类似constructorBased的类 -->
+            <property name="immutable" value="true"/>
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--Mapper.xml文件存放位置：-->
+        <sqlMapGenerator targetPackage="${targetPackage}.xml"  targetProject="${targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--Mapper.java放位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="${targetPackage}.mapper"  targetProject="${targetProject}">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--生成对应表及类名-->
+        <table tableName="t_sys_user" domainObjectName="SysUserEntity" mapperName="SysUserMapper" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>                   <!-- 是否禁用驼峰命名法 -->
+            <property name="rootClass" value="com.sszh.core.entity.CommonEntity"/>  <!--生成的文件集成指定的父类-->
+        </table>
+        <table tableName="t_sys_menu" domainObjectName="SysMenuEntity" mapperName="SysMenuMapper" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>                   <!-- 是否禁用驼峰命名法 -->
+            <property name="rootClass" value="com.sszh.core.entity.CommonEntity"/>  <!--生成的文件集成指定的父类-->
+        </table>
+
+    </context>
+    
+</generatorConfiguration>

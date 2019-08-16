@@ -15,6 +15,7 @@
     <modules>
         <module>sszh-util</module>
         <module>sszh-core</module>
+        <module>sszh-util-mybatis-generator</module>
     </modules>
     
 </project>

@@ -1,8 +1,8 @@
 package com.sszh.web.admin.cache.init.user;
 
 import com.sszh.cache.BaseCacheService;
-import com.sszh.cache.util.ExpireTime;
-import com.sszh.server.sso.api.entity.UserBean;
+import com.sszh.common.util.date.ExpireTime;
+import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.web.admin.cache.AdminBaseCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,12 +21,12 @@ public class UserCache extends AdminBaseCache {
     
     
     //获取用户信息
-    public UserBean getUserSessionInfo(String sessionId) {
-        return basecache.getJson(USER_SESSION_INFO_KEY + sessionId, UserBean.class);
+    public SysUserEntity getUserSessionInfo(String sessionId) {
+        return basecache.getJson(USER_SESSION_INFO_KEY + sessionId, SysUserEntity.class);
     }
     //录入登陆信息（半个小时有效）
-    public void setUserSessionInfo(UserBean userBean, String sessionId) {
-        basecache.setJson(USER_SESSION_INFO_KEY + sessionId, userBean, new ExpireTime(1800L));
+    public void setUserSessionInfo(SysUserEntity sysUserEntity, String sessionId) {
+        basecache.setJson(USER_SESSION_INFO_KEY + sessionId, sysUserEntity, new ExpireTime(1800L));
     }
     //踢出异地登陆
     public void delUserSessionInfo(String sessionId) {

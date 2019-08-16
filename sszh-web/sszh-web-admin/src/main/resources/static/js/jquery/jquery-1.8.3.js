@@ -278,7 +278,7 @@ jQuery.fn = jQuery.prototype = {
 		return this.prevObject || this.constructor(null);
 	},
 
-	// For internal use only.
+	// For main.java.com.sszh.mybatis.internal use only.
 	// Behaves like an Array's method, not like a jQuery method.
 	push: core_push,
 	sort: [].sort,
@@ -576,7 +576,7 @@ jQuery.extend({
 		return elem.nodeName && elem.nodeName.toLowerCase() === name.toLowerCase();
 	},
 
-	// args is for internal usage only
+	// args is for main.java.com.sszh.mybatis.internal usage only
 	each: function( obj, callback, args ) {
 		var name,
 			i = 0,
@@ -633,7 +633,7 @@ jQuery.extend({
 				( text + "" ).replace( rtrim, "" );
 		},
 
-	// results is for internal usage only
+	// results is for main.java.com.sszh.mybatis.internal usage only
 	makeArray: function( arr, results ) {
 		var type,
 			ret = results || [];
@@ -715,7 +715,7 @@ jQuery.extend({
 		return ret;
 	},
 
-	// arg is for internal usage only
+	// arg is for main.java.com.sszh.mybatis.internal usage only
 	map: function( elems, callback, arg ) {
 		var value, key,
 			ret = [],
@@ -1594,8 +1594,8 @@ jQuery.extend({
 
 		thisCache = cache[ id ];
 
-		// jQuery data() is stored in a separate object inside the object's internal data
-		// cache in order to avoid key collisions between internal data and user-defined
+		// jQuery data() is stored in a separate object inside the object's main.java.com.sszh.mybatis.internal data
+		// cache in order to avoid key collisions between main.java.com.sszh.mybatis.internal data and user-defined
 		// data.
 		if ( !pvt ) {
 			if ( !thisCache.data ) {
@@ -1688,7 +1688,7 @@ jQuery.extend({
 		if ( !pvt ) {
 			delete cache[ id ].data;
 
-			// Don't destroy the parent cache unless the internal data object
+			// Don't destroy the parent cache unless the main.java.com.sszh.mybatis.internal data object
 			// had been the only thing left in it
 			if ( !isEmptyDataObject( cache[ id ] ) ) {
 				return;
@@ -1709,7 +1709,7 @@ jQuery.extend({
 		}
 	},
 
-	// For internal use only.
+	// For main.java.com.sszh.mybatis.internal use only.
 	_data: function( elem, name, data ) {
 		return jQuery.data( elem, name, data, true );
 	},
@@ -5815,7 +5815,7 @@ jQuery.fn.extend({
 		}
 	},
 
-	// keepData is for internal use only--do not document
+	// keepData is for main.java.com.sszh.mybatis.internal use only--do not document
 	remove: function( selector, keepData ) {
 		var elem,
 			i = 0;
@@ -6419,7 +6419,7 @@ jQuery.extend({
 		return ret;
 	},
 
-	cleanData: function( elems, /* internal */ acceptData ) {
+	cleanData: function( elems, /* main.java.com.sszh.mybatis.internal */ acceptData ) {
 		var data, id, elem, type,
 			i = 0,
 			internalKey = jQuery.expando,
@@ -7367,7 +7367,7 @@ function addToPrefiltersOrTransports( structure ) {
 
 // Base inspection function for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR,
-		dataType /* internal */, inspected /* internal */ ) {
+		dataType /* main.java.com.sszh.mybatis.internal */, inspected /* main.java.com.sszh.mybatis.internal */ ) {
 
 	dataType = dataType || options.dataTypes[ 0 ];
 	inspected = inspected || {};

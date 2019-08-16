@@ -5,8 +5,8 @@ import com.sszh.core.enums.code.BaseExceptionCodeEnum;
 import com.sszh.core.exception.BaseException;
 import com.sszh.core.exception.BusinessException;
 import com.sszh.core.result.JSONResult;
-import com.sszh.server.sso.api.entity.UserBean;
-import com.sszh.server.sso.api.feign.interfaces.UserClient;
+import com.sszh.server.sso.api.entity.SysUserEntity;
+import com.sszh.server.sso.api.feign.interfaces.SysUserClient;
 import com.sszh.web.admin.cache.AdminCacheFactory;
 import com.sszh.web.admin.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +31,7 @@ public class LoginController extends BaseController {
 
 
     @Resource
-    private UserClient userClient;
+    private SysUserClient sysUserClient;
     @Autowired
     private AdminCacheFactory adminCacheFactory;
 
@@ -72,7 +72,7 @@ public class LoginController extends BaseController {
         if (!(sessionCode.equals(vCode))) {
             throw new BusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "验证码不正确");
         }
-        UserBean user = userClient.loginQuery(account);
+        SysUserEntity user = sysUserClient.loginQuery(account);
         if (null == user) {
             throw new BusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "用户不存在");
         }
