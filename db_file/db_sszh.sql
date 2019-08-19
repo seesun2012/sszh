@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100036
 File Encoding         : 65001
 
-Date: 2019-08-15 19:27:22
+Date: 2019-08-19 14:51:49
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -54,11 +54,36 @@ CREATE TABLE `t_order` (
 INSERT INTO `t_order` VALUES ('01U64GmsjGDqSeHmVFc', 'SH1565434757256', '88888.88');
 
 -- ----------------------------
+-- Table structure for t_sys_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `t_sys_menu`;
+CREATE TABLE `t_sys_menu` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '权限ID',
+  `parent_id` int(11) NOT NULL DEFAULT '0' COMMENT '父菜单ID，取值：t_sys_menu.id，一级菜单为0',
+  `name` varchar(50) NOT NULL COMMENT '菜单名称',
+  `url` varchar(200) NOT NULL DEFAULT '#' COMMENT '菜单URL，如：sys/menu',
+  `perms` varchar(500) NOT NULL DEFAULT '#' COMMENT '授权(多个用逗号分隔，如：user:list,user:create)',
+  `type` int(4) NOT NULL DEFAULT '1' COMMENT '类型   1：菜单 2：按钮',
+  `icon` varchar(50) DEFAULT NULL COMMENT '菜单图标',
+  `status` int(4) NOT NULL DEFAULT '-1' COMMENT '菜单状态：-1 禁用  1启用',
+  `system_mark` int(4) NOT NULL DEFAULT '1' COMMENT '系统标识：1 运营  2 商户PC',
+  `order_num` int(4) NOT NULL DEFAULT '1' COMMENT '排序',
+  `create_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1002 DEFAULT CHARSET=utf8 COMMENT='运营系统-系统菜单表';
+
+-- ----------------------------
+-- Records of t_sys_menu
+-- ----------------------------
+INSERT INTO `t_sys_menu` VALUES ('1000', '0', '系统管理', '#', '#', '1', null, '1', '1', '9999', '2019-08-16 09:33:38');
+INSERT INTO `t_sys_menu` VALUES ('1001', '1000', '菜单管理', 'sys/menu', '#', '1', null, '1', '1', '1', '2019-08-16 09:34:58');
+
+-- ----------------------------
 -- Table structure for t_sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `t_sys_user`;
 CREATE TABLE `t_sys_user` (
-  `id` int(11) NOT NULL COMMENT '主键ID',
+  `id` varchar(225) NOT NULL COMMENT '主键ID',
   `account` varchar(255) NOT NULL COMMENT '登陆账号',
   `user_name` varchar(255) NOT NULL COMMENT '用户名',
   `pass_word` varchar(255) NOT NULL COMMENT '密码：（由原始密码+随机串组合）MD5值组合',
