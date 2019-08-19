@@ -1,9 +1,9 @@
 package com.sszh.web.admin.cache.init.system;
 
 import com.sszh.cache.BaseCacheService;
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 import com.sszh.core.exception.BaseException;
-import com.sszh.core.exception.BusinessException;
+import com.sszh.core.exception.BaseBusinessException;
 import com.sszh.web.admin.cache.AdminBaseCache;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +31,7 @@ public class SystemCache extends AdminBaseCache {
     //获取验证码
     public String getYanZhengMa(String sessionId) throws BaseException {
         String yzm = basecache.getStr(YAN_ZHENG_MA_KEY + sessionId);
-        if (null == yzm) throw new BusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "页面停留时间过长，图片验证码已被清除，请刷新重试");
+        if (null == yzm) throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "页面停留时间过长，图片验证码已被清除，请刷新重试");
         return yzm;
     }
     //清除验证码

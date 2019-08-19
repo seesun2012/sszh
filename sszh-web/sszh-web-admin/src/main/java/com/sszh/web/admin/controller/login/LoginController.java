@@ -1,9 +1,9 @@
 package com.sszh.web.admin.controller.login;
 
-import com.sszh.common.util.string.StringUtil;
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.common.util.string.StringUtils;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 import com.sszh.core.exception.BaseException;
-import com.sszh.core.exception.BusinessException;
+import com.sszh.core.exception.BaseBusinessException;
 import com.sszh.core.result.JSONResult;
 import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.server.sso.api.feign.interfaces.SysUserClient;
@@ -56,28 +56,29 @@ public class LoginController extends BaseController {
     @ResponseBody
     public JSONResult<String> doLogin(HttpServletRequest request, @RequestParam(name = "account") String account, @RequestParam(name = "passWord") String passWord, @RequestParam(name = "vCode") String vCode) throws Exception {
         // 校验参数
-        if (StringUtil.isEmpty(account)) {
-            throw new BusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "登陆用户名不能为空");
+        if (StringUtils.isEmpty(account)) {
+            throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "登陆用户名不能为空");
         }
-        if (StringUtil.isEmpty(passWord)) {
+        if (StringUtils.isEmpty(passWord)) {
             throw new BaseException(BaseExceptionCodeEnum.BASE_10000.getCode(), "登陆密码不能为空");
         }
-        if (StringUtil.isEmpty(vCode)) {
-            throw new BusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "请输入验证码");
+        if (StringUtils.isEmpty(vCode)) {
+            throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "请输入验证码");
         }
         //获取sessionId
         String sessionId = request.getSession().getId();
         // 校验验证码
         String sessionCode = adminCacheFactory.getSystemCache().getYanZhengMa(sessionId);
         if (!(sessionCode.equals(vCode))) {
-            throw new BusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "验证码不正确");
+            throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "验证码不正确");
         }
-        SysUserEntity user = sysUserClient.loginQuery(account);
+        SysUserEntity user = sysUserClient.selectByPrimaryKey(account);
+        user = sysUserClient.loginQuery(account);
         if (null == user) {
-            throw new BusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "用户不存在");
+            throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "用户不存在");
         }
         if (!user.getPassWord().equals(passWord)) {
-            throw new BusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "密码不正确");
+            throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "密码不正确");
         }
         //踢出异地登陆
         adminCacheFactory.getUserCache().delUserSessionInfo(sessionId);

@@ -2,9 +2,8 @@ package com.sszh.core.result;
 
 
 import com.sszh.core.config.CodeFileConfig;
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * 封装统一返回JSON格式

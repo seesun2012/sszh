@@ -2,164 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sszh.server.sso.mapper.SysMenuMapper">
   <resultMap id="BaseResultMap" type="com.sszh.server.sso.api.entity.SysMenuEntity">
-    <constructor>
-      <idArg column="ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="PARENT_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="NAME" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="URL" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="PERMS" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="TYPE" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="ICON" javaType="java.lang.String" jdbcType="VARCHAR" />
-      <arg column="STATUS" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="SYSTEM_MARK" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="ORDER_NUM" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="CREATE_TIME" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-    </constructor>
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="perms" jdbcType="VARCHAR" property="perms" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="system_mark" jdbcType="INTEGER" property="systemMark" />
+    <result column="order_num" jdbcType="INTEGER" property="orderNum" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    ID, PARENT_ID, NAME, URL, PERMS, TYPE, ICON, STATUS, SYSTEM_MARK, ORDER_NUM, CREATE_TIME
+    id, parent_id, name, url, perms, type, icon, status, system_mark, order_num, create_time
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
-    <include refid="Base_Column_List" />
-    from t_sys_menu
-    where ID = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from t_sys_menu
-    where ID = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.sszh.server.sso.api.entity.SysMenuEntity">
-    insert into t_sys_menu (ID, PARENT_ID, NAME, 
-      URL, PERMS, TYPE, ICON, 
-      STATUS, SYSTEM_MARK, ORDER_NUM, 
-      CREATE_TIME)
-    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{perms,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{icon,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{systemMark,jdbcType=INTEGER}, #{orderNum,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.sszh.server.sso.api.entity.SysMenuEntity">
-    insert into t_sys_menu
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        ID,
-      </if>
-      <if test="parentId != null">
-        PARENT_ID,
-      </if>
-      <if test="name != null">
-        NAME,
-      </if>
-      <if test="url != null">
-        URL,
-      </if>
-      <if test="perms != null">
-        PERMS,
-      </if>
-      <if test="type != null">
-        TYPE,
-      </if>
-      <if test="icon != null">
-        ICON,
-      </if>
-      <if test="status != null">
-        STATUS,
-      </if>
-      <if test="systemMark != null">
-        SYSTEM_MARK,
-      </if>
-      <if test="orderNum != null">
-        ORDER_NUM,
-      </if>
-      <if test="createTime != null">
-        CREATE_TIME,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="parentId != null">
-        #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="perms != null">
-        #{perms,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        #{type,jdbcType=INTEGER},
-      </if>
-      <if test="icon != null">
-        #{icon,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="systemMark != null">
-        #{systemMark,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        #{orderNum,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sszh.server.sso.api.entity.SysMenuEntity">
-    update t_sys_menu
-    <set>
-      <if test="parentId != null">
-        PARENT_ID = #{parentId,jdbcType=INTEGER},
-      </if>
-      <if test="name != null">
-        NAME = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null">
-        URL = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="perms != null">
-        PERMS = #{perms,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null">
-        TYPE = #{type,jdbcType=INTEGER},
-      </if>
-      <if test="icon != null">
-        ICON = #{icon,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        STATUS = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="systemMark != null">
-        SYSTEM_MARK = #{systemMark,jdbcType=INTEGER},
-      </if>
-      <if test="orderNum != null">
-        ORDER_NUM = #{orderNum,jdbcType=INTEGER},
-      </if>
-      <if test="createTime != null">
-        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.sszh.server.sso.api.entity.SysMenuEntity">
-    update t_sys_menu
-    set PARENT_ID = #{parentId,jdbcType=INTEGER},
-      NAME = #{name,jdbcType=VARCHAR},
-      URL = #{url,jdbcType=VARCHAR},
-      PERMS = #{perms,jdbcType=VARCHAR},
-      TYPE = #{type,jdbcType=INTEGER},
-      ICON = #{icon,jdbcType=VARCHAR},
-      STATUS = #{status,jdbcType=INTEGER},
-      SYSTEM_MARK = #{systemMark,jdbcType=INTEGER},
-      ORDER_NUM = #{orderNum,jdbcType=INTEGER},
-      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
 </mapper>

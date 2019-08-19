@@ -16,7 +16,7 @@ public interface SysUserClient {
     SysUserEntity loginQuery(@RequestParam(name = "account") String account) throws Exception;
     
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.GET)
-    SysUserEntity selectByPrimaryKey(@RequestParam(name = "id", required = false) Long id) throws Exception;
+    SysUserEntity selectByPrimaryKey(@RequestParam(name = "id", required = false) String id) throws Exception;
 
     @RequestMapping(value = "/insertSelective", method = RequestMethod.POST)
     Integer insertSelective(@RequestBody SysUserEntity user) throws Exception;

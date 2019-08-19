@@ -1,4 +1,4 @@
-package com.sszh.core.enums.code;
+package com.sszh.core.code;
 
 
 import com.sszh.core.enums.BaseEnum;

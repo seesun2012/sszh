@@ -3,8 +3,12 @@ package com.sszh.server.sso.controller;
 import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.server.sso.api.feign.interfaces.SysUserClient;
 import com.sszh.server.sso.service.ISysUserService;
+import com.sszh.server.sso.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * 用户主控制器
@@ -14,14 +18,14 @@ import org.springframework.web.bind.annotation.*;
 public class SysUserController implements SysUserClient {
 
     @Autowired
-    private ISysUserService userService;
+    private ISysUserService sysUserService;
 
     /**
      * 登陆查询
      */
     @RequestMapping(value = "/loginQuery", method = RequestMethod.POST)
     public SysUserEntity loginQuery(@RequestParam(name = "account") String account) throws Exception {
-        return userService.loginQuery(account);
+        return sysUserService.loginQuery(account);
     }
 
     /**
@@ -30,8 +34,8 @@ public class SysUserController implements SysUserClient {
      */
     @Override
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.GET)
-    public SysUserEntity selectByPrimaryKey(@RequestParam(name = "id") Long id) throws Exception {
-        return userService.selectByPrimaryKey(id);
+    public SysUserEntity selectByPrimaryKey(@RequestParam(name = "id") String id) throws Exception {
+        return sysUserService.selectByPrimaryKey(id);
     }
 
     /**
@@ -43,7 +47,7 @@ public class SysUserController implements SysUserClient {
         if (null == user) throw new Exception("user对象不能为空");
         if (null == user.getId()) throw new Exception("id不能为空");
         if (null == user.getUserName()) throw new Exception("name不能为空");
-        int i = userService.insertSelective(user);
+        int i = sysUserService.insertSelective(user);
         return i;
     }
 

@@ -1,26 +1,11 @@
 package com.sszh.server.sso.api.entity;
 
 import com.sszh.core.entity.CommonEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.Accessors;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
-@Data
-@Builder
-@Table(name = "t_sys_user")
 public class SysUserEntity extends CommonEntity {
     /**
      * 主键ID
      */
-    @Id
     private String id;
 
     /**

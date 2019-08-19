@@ -1,9 +1,9 @@
 package com.sszh.core.filter;
 
 
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 import com.sszh.core.exception.BaseRuntimeException;
-import com.sszh.core.exception.BusinessException;
+import com.sszh.core.exception.BaseBusinessException;
 import com.sszh.core.result.JSONResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     public JSONResult<Object> defaultErrorHandler(HttpServletRequest req, Exception e, HttpServletResponse rep) {
         String stackMessage = null;
-        logger.error("微服务Controller调用异常：---------------------------", e);
+        logger.error("微服务Controller调用异常捕获：---------------------------", e);
         String code = BaseExceptionCodeEnum.BASE_104.getCode();
         String message = BaseExceptionCodeEnum.BASE_104.getMsg();
         //捕获文件异常
@@ -40,8 +40,8 @@ public class GlobalExceptionHandler {
         //捕获-运行时异常
         if (e instanceof RuntimeException) {
             //捕获业务异常
-            if (e instanceof BusinessException) {
-                BusinessException exception = (BusinessException) e;
+            if (e instanceof BaseBusinessException) {
+                BaseBusinessException exception = (BaseBusinessException) e;
                 code = exception.getCode();
                 message = e.getMessage();
                 stackMessage = exception.getMessage();

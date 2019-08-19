@@ -1,15 +1,12 @@
 package com.sszh.core.exception;
 
 import com.sszh.core.config.ExceptionConfig;
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 
 import java.util.Map;
 
 /**
  * 运行时异常基类
- *
- * @author Bob
- *
  */
 public class BaseRuntimeException extends RuntimeException {
 

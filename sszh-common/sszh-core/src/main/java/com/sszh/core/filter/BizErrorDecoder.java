@@ -2,7 +2,7 @@ package com.sszh.core.filter;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.sszh.core.exception.BusinessException;
+import com.sszh.core.exception.BaseBusinessException;
 import feign.Response;
 import feign.Util;
 import feign.codec.ErrorDecoder;
@@ -21,9 +21,9 @@ public class BizErrorDecoder implements ErrorDecoder {
         try {
             String jsonStr = Util.toString(response.body().asReader());
             JSONObject json = JSONObject.parseObject(jsonStr);
-            return new BusinessException(json.getString("code"), json.getString("tip"));
+            return new BaseBusinessException(json.getString("code"), json.getString("tip"));
         } catch (IOException e) {
-            return new BusinessException("104","系统异常");
+            return new BaseBusinessException("104","系统异常");
         }
     }
     

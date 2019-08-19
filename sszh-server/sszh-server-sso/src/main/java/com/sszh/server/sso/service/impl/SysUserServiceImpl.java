@@ -1,41 +1,38 @@
 package com.sszh.server.sso.service.impl;
 
-import com.codingapi.txlcn.tc.annotation.LcnTransaction;
+import com.sszh.core.service.BaseServiceImpl;
 import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.server.sso.mapper.SysUserMapper;
 import com.sszh.server.sso.service.ISysUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * 用户主业务处理类
  */
 @Service
-public class SysUserServiceImpl implements ISysUserService {
+public class SysUserServiceImpl extends BaseServiceImpl<SysUserEntity> implements ISysUserService {
 
     @Autowired
     private SysUserMapper sysUserMapper;
 
-    @Override
-    public SysUserEntity selectByPrimaryKey(Long id) {
-        return sysUserMapper.selectByPrimaryKey(id);
-    }
 
-    @LcnTransaction                     //分布式事务
-    @Transactional                      //本地事务
     @Override
-    public Integer insertSelective(SysUserEntity record) {
-        if (null == record) throw new RuntimeException("user对象不能为空");
-        Integer i = sysUserMapper.insertSelective(record);
-        System.out.println("-------------" + i);
-        //        throw new RuntimeException("测试事务回滚");
-        return i;
+    public SysUserEntity selectByPrimaryKey(String id) {
+        return sysUserMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public SysUserEntity loginQuery(String account) {
-        return sysUserMapper.loginQuery(account);
+        Example param = new Example(SysUserEntity.class);
+        param.getSelectColumns();
+        List<SysUserEntity> list = sysUserMapper.selectByExample(param);
+        if (null == list && list.size() <= 0) return null;
+        SysUserEntity bean = sysUserMapper.queryLogin(account);
+        return bean;
     }
 
 }

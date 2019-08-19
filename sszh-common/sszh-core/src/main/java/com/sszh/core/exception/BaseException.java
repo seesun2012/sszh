@@ -1,16 +1,13 @@
 package com.sszh.core.exception;
 
 import com.sszh.core.config.ExceptionConfig;
-import com.sszh.core.enums.code.BaseExceptionCodeEnum;
+import com.sszh.core.code.BaseExceptionCodeEnum;
 
 import java.util.Map;
 
 
 /**
  * 检查型异常基类
- *
- * @author Bob
- *
  */
 public class BaseException extends Exception {
 

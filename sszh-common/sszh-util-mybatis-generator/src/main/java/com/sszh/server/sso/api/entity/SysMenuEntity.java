@@ -1,27 +1,12 @@
 package com.sszh.server.sso.api.entity;
 
 import com.sszh.core.entity.CommonEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-import lombok.experimental.Accessors;
-
-import javax.persistence.*;
 import java.util.Date;
 
-@RequiredArgsConstructor
-@AllArgsConstructor
-@Accessors(chain = true)
-@Data
-@Builder
-@Table(name = "t_sys_menu")
 public class SysMenuEntity extends CommonEntity {
     /**
      * 权限ID
      */
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /**
