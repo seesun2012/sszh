@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.sszh.core.entity.CommonEntity;
 import org.apache.ibatis.exceptions.TooManyResultsException;
+import org.apache.ibatis.session.RowBounds;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.mapper.entity.Example;
 
 /**
  * 持久层基础接口（传入参数必须是继承了CommonEntity实体）
@@ -12,69 +14,170 @@ import tk.mybatis.mapper.entity.Condition;
 public interface IBaseService<T extends CommonEntity> {
 
     /**
-     * 插入数据
-     * @param model
-     */
-    void save(T model);
-
-    /**
-     * 批量插入数据
-     * @param models
-     */
-    void save(List<T> models);
-
-    /**
-     * 通过主鍵刪除
-     * @param id
-     */
-    void deleteById(Integer id);
-
-    /**
-     * 批量刪除 
-     * @param ids eg：ids -> "1,2,3,4"
-     */
-    void deleteByIds(String ids);
-
-    /**
-     * 更新
-     * @param model
-     */
-    void update(T model);
-
-    /**
-     * 通过ID查找
-     * @param id
+     * 全属性插入
+     *
+     * @param t
      * @return
      */
-    T findById(Integer id);
+    public int insert(T t);
 
     /**
-     * 通过Model中某个成员变量名称（非数据表中column的名称）查找,value需符合unique约束
-     * @param fieldName
-     * @param value
+     * 按给定属性插入,效率比较高
+     *
+     * @param t
      * @return
-     * @throws TooManyResultsException
      */
-    T findBy(String fieldName, Object value) throws TooManyResultsException;
+    public int insertSelective(T t);
 
     /**
-     * 通过多个ID查找
-     * @param ids eg：ids -> "1,2,3,4"
+     * 批量插入
+     *
+     * @param t
      * @return
      */
-    List<T> findByIds(String ids);
+    public int insertList(List<T> t);
 
     /**
-     * 根据条件查找
-     * @param condition
+     * 查询
+     *
+     * @param t
      * @return
      */
-    List<T> findByCondition(Condition condition);
+    public List<T> select(T t);
 
     /**
-     * 获取所有
+     * 查询一个
+     *
+     * @param t
      * @return
      */
-    List<T> findAll();
+    public T selectOne(T t);
+
+    /**
+     * 获取全部数据，通常和分页一起用
+     *
+     * @return
+     */
+    public List<T> selectAll();
+
+    /**
+     * 查询符合条件的数据总条数
+     *
+     * @param t
+     * @return
+     */
+    public int selectCount(T t);
+
+    /**
+     * 根据模板查询条数
+     *
+     * @param example
+     * @return
+     */
+    public int selectCountByExample(Example example);
+
+    /**
+     * 根据主键查询
+     *
+     * @param t
+     * @return
+     */
+    public T selectByPrimaryKey(T t);
+
+    /**
+     * 根据模板查询
+     *
+     * @param example
+     * @return
+     */
+    public List<T> selectByExample(Example example);
+
+    /**
+     * 根据实体查询数据
+     *
+     * @param t
+     * @return
+     */
+    public T selectOneByExample(T t);
+
+    /**
+     * 根据行号查询
+     *
+     * @param t
+     * @param rowBounds
+     * @return
+     */
+    public List<T> selectByRowBounds(T t, RowBounds rowBounds);
+
+    /**
+     * 根据模板和行号查询
+     *
+     * @param example
+     * @param rowBounds
+     * @return
+     */
+    public List<T> selectByExampleAndRowBounds(Example example, RowBounds rowBounds);
+
+    /**
+     * 根据模板删除
+     *
+     * @param example
+     * @return
+     */
+    public int deleteByExample(Example example);
+
+    /**
+     * 根据主键删除
+     *
+     * @param t
+     * @return
+     */
+    public int deleteByPrimaryKey(T t);
+
+    /**
+     * 删除
+     *
+     * @param t
+     * @return
+     */
+    public int delete(T t);
+
+    /**
+     * 根据模板更新，全字段更新
+     *
+     * @param example
+     * @return
+     */
+    public int updateByExample(T t, Example example);
+
+    /**
+     * 根据模板更新选定子段
+     *
+     * @param t
+     * @param example
+     * @return
+     */
+    public int updateByExampleSelective(T t, Example example);
+
+    /**
+     * 根据主键更新,将设置的属性进行更新，如果不设置属性，自动更新为null。
+     *
+     * @param t
+     * @return
+     */
+    public int updateByPrimaryKey(T t);
+
+    /**
+     * 根据主键更新,将设置的属性进行更新，没有设置的属性不更新。推荐
+     *
+     * @param t
+     * @return
+     */
+    public int updateByPrimaryKeySelective(T t);
+
+    
+    List<T> selectPage(int pageNum, int pageSize);
+
+    List<T> selectPage(int pageNum, int pageSize, T entity);
     
 }
