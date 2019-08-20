@@ -43,34 +43,27 @@
 
 	<div class="layui-side layui-bg-black">
 		<div class="layui-side-scroll">
+			<div title="菜单缩放" class="kit-side-fold"><i class="fa fa-navicon" aria-hidden="true"></i></div>
 			<!-- 左侧导航区域（可配合layui已有的垂直导航） -->
 			<ul class="layui-nav layui-nav-tree"  lay-filter="test">
-				<li class="layui-nav-item layui-nav-itemed">
-					<a class="" href="javascript:;">所有商品</a>
-					<dl class="layui-nav-child">
-						<dd><a href="javascript:;">列表一</a></dd>
-						<dd><a href="javascript:;">列表二</a></dd>
-						<dd><a href="javascript:;">列表三</a></dd>
-						<dd><a href="">超链接</a></dd>
-					</dl>
-				</li>
 				<li class="layui-nav-item">
-					<a href="javascript:;">解决方案</a>
+					<a href="javascript:;"><i class="layui-icon layui-icon-set"></i> <span >系统管理</span></a>
 					<dl class="layui-nav-child">
-						<dd><a href="javascript:;">列表一</a></dd>
-						<dd><a href="javascript:;">列表二</a></dd>
-						<dd><a href="">超链接</a></dd>
+						<dd><a href="javascript:;"><i class="fa fa-window-restore fa-lg"></i> <span >系统信息</span></a></dd>
+						<dd><a href="javascript:;"><i class="fa fa-database fa-lg"></i> <span >操作日志</span></a></dd>
 					</dl>
 				</li>
-				<li class="layui-nav-item"><a href="">云市场</a></li>
-				<li class="layui-nav-item"><a href="">发布商品</a></li>
 			</ul>
 		</div>
 	</div>
 
 	<div class="layui-body">
 		<!-- 内容主体区域 -->
-		<div style="padding: 15px;">内容主体区域</div>
+		<div style="padding: 15px;">
+			<div style="margin: 0px auto; width: 100%; border: 0px solid red;">
+				<p style="text-align: center; font-size: 20px; padding: 10px; font-weight: 700;">欢迎使用【XXXX-运营管理系统】，当前时间：new Date()</p>
+			</div>
+		</div>
 	</div>
 
 	<div class="layui-footer">
@@ -81,8 +74,44 @@
 <script src="js/layui-v2.5.4/layui.js"></script>
 <script>
 	//JavaScript代码区域
+	//JavaScript代码区域
 	layui.use('element', function(){
 		var element = layui.element;
+
+	});
+	var isShow = true;  //定义一个标志位
+	$('.kit-side-fold').click(function(){
+		//选择出所有的span，并判断是不是hidden
+		$('.layui-nav-item span').each(function(){
+			if($(this).is(':hidden')){
+				$(this).show();
+			}else{
+				$(this).hide();
+			}
+		});
+		//判断isshow的状态
+		if(isShow){
+			$('.layui-side.layui-bg-black').width(60); //设置宽度
+			$('.kit-side-fold i').css('margin-right', '70%');  //修改图标的位置
+			//将footer和body的宽度修改
+			$('.layui-body').css('left', 60+'px');
+			$('.layui-footer').css('left', 60+'px');
+			//将二级导航栏隐藏
+			$('dd span').each(function(){
+				$(this).hide();
+			});
+			//修改标志位
+			isShow =false;
+		}else{
+			$('.layui-side.layui-bg-black').width(200);
+			$('.kit-side-fold i').css('margin-right', '10%');
+			$('.layui-body').css('left', 200+'px');
+			$('.layui-footer').css('left', 200+'px');
+			$('dd span').each(function(){
+				$(this).show();
+			});
+			isShow =true;
+		}
 	});
 </script>
 </body>

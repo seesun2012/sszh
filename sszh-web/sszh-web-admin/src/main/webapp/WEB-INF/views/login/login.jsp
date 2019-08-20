@@ -287,7 +287,6 @@
             for (var item in formData) {
                 formObject[formData[item].name] = formData[item].value;
             }
-            var loadFlash = layer.load(0, {shade: [0.7, '#393D49']}, {shadeClose: true}); //0代表加载的风格，支持0-2
             $.ajax({
                 url: "login/doLogin",
                 type: "POST",
@@ -299,7 +298,10 @@
                 },
                 dataType: "json",
                 success: function (data) {
-                    window.location.href = data.data;
+                    layer.msg('恭喜您，登陆成功!');
+                    setTimeout(function () {
+                        window.location.href = data.data;
+                    }, 1500);
                 },
                 error: function (error) {
                     layer.msg('请求异常');

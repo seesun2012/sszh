@@ -10,10 +10,8 @@ if (!(typeof jQuery == 'undefined')) {
         //备份opt中error和success方法
         var fn = {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
-                debugger;
             },
             success: function (data, textStatus) {
-                debugger;
             }
         }
         if (opt.error) {
@@ -33,7 +31,6 @@ if (!(typeof jQuery == 'undefined')) {
             },
             success: function (data, textStatus) {
                 //成功回调方法增强处理
-                debugger;
                 fn.success(data, textStatus);
             },
             beforeSend: function (XHR) {
@@ -55,14 +52,13 @@ if (!(typeof layui == "undefined")) {
         //首先备份下jquery的ajax方法
         var _ajax = $.ajax;
         //重写jquery的ajax方法
+        var flashLoad;
         $.ajax = function (opt) {
             //备份opt中error和success方法
             var fn = {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    debugger;
                 },
                 success: function (data, textStatus) {
-                    debugger;
                 }
             }
             if (opt.error) {
@@ -74,9 +70,7 @@ if (!(typeof layui == "undefined")) {
             //扩展增强处理
             var _opt = $.extend(opt, {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    debugger;
                     //错误方法增强处理
-                    layer.closeAll();
                     if ('TIMEOUT' == XMLHttpRequest.getResponseHeader('SESSIONS_TATUS')) {
                         window.location.href = XMLHttpRequest.getResponseHeader('content_path');
                     }
@@ -84,17 +78,18 @@ if (!(typeof layui == "undefined")) {
                 },
                 success: function (data, textStatus) {
                     //成功回调方法增强处理
-                    if (-1 == data.status) {
-                        layer.closeAll();
+                    if (-1 == data.status || '-1' == data.status) {
                         return layer.msg(data.tip);
                     }
                     fn.success(data, textStatus);
                 },
                 beforeSend: function (XHR) {
                     //提交前回调方法
+                    flashLoad = layer.load(0, {shade: [0.7, '#393D49']}, {shadeClose: true}); //0代表加载的风格，支持0-2
                 },
                 complete: function (XHR, TS) {
                     //请求完成后回调函数 (请求成功或失败之后均调用)。
+                    layer.close(flashLoad);
                 }
             });
             return _ajax(_opt);

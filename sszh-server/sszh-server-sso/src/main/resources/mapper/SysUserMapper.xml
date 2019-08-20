@@ -12,6 +12,7 @@
     id, account, user_name, pass_word, ran_str
   </sql>
   
+  <!--登陆查询：根据账号查询用户信息-->
   <select id="queryLogin" resultMap="BaseResultMap">
     SELECT <include refid="Base_Column_List"/> FROM t_sys_user WHERE account = #{account,jdbcType=VARCHAR}
   </select>
