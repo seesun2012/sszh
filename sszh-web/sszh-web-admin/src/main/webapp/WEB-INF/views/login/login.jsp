@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>登陆</title>
     <link rel="stylesheet" href="js/layui-v2.5.4/css/layui.css" media="all">
 
     <style type="text/css">
@@ -186,54 +186,55 @@
 </head>
 <body>
 
-    <div class="layadmin-user-login">
-        <div class="layadmin-user-login-main">
-            <div class="layadmin-user-login-box layadmin-user-login-header">
-                <h2>XXXX-运营管理系统</h2>
-                <p>系统当前时间：<span class="system_time"></span></p>
+<div class="layadmin-user-login">
+    <div class="layadmin-user-login-main">
+        <div class="layadmin-user-login-box layadmin-user-login-header">
+            <h2>SSZH-运营管理系统</h2>
+            <p>系统当前时间：<span class="system_time"></span></p>
+        </div>
+        <form class="layadmin-user-login-box layadmin-user-login-body layui-form">
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-username"></label>
+                <input type="text" name="account" value="" lay-verify="required" placeholder="用户名" class="layui-input">
             </div>
-            <form class="layadmin-user-login-box layadmin-user-login-body layui-form">
-                <div class="layui-form-item">
-                    <label class="layadmin-user-login-icon layui-icon layui-icon-username"></label>
-                    <input type="text" name="account" value="" lay-verify="required" placeholder="用户名" class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <label class="layadmin-user-login-icon layui-icon layui-icon-password"></label>
-                    <input type="password" name="passWord" value="" lay-verify="required" placeholder="密码" class="layui-input">
-                </div>
-                <div class="layui-form-item">
-                    <div class="layui-row">
-                        <div class="layui-col-xs7">
-                            <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"></label>
-                            <input type="text" name="vCode" lay-verify="required" placeholder="图形验证码" class="layui-input">
-                        </div>
-                        <div class="layui-col-xs5">
-                            <div style="margin-left: 10px;">
-                                <img src="system/getCheckCode" class="layadmin-user-login-codeimg" id="ckeck_code_img"
-                                     onclick="changeImg(this)">
-                            </div>
+            <div class="layui-form-item">
+                <label class="layadmin-user-login-icon layui-icon layui-icon-password"></label>
+                <input type="password" name="passWord" value="" lay-verify="required" placeholder="密码"
+                       class="layui-input">
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-row">
+                    <div class="layui-col-xs7">
+                        <label class="layadmin-user-login-icon layui-icon layui-icon-vercode"></label>
+                        <input type="text" name="vCode" lay-verify="required" placeholder="图形验证码" class="layui-input">
+                    </div>
+                    <div class="layui-col-xs5">
+                        <div style="margin-left: 10px;">
+                            <img src="system/getCheckCode" class="layadmin-user-login-codeimg" id="ckeck_code_img"
+                                 onclick="changeImg(this)">
                         </div>
                     </div>
                 </div>
-                <div class="layui-form-item" style="margin-bottom: 20px;">
-                    <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-                    <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i
-                            class="layui-icon layui-icon-ok"></i></div>
-                    <a href="user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
-                </div>
-                <div class="layui-form-item">
-                    <a class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login_submit_btn">登 入</a>
-                </div>
-                <div class="layui-trans layui-form-item layadmin-user-login-other">
-                    <label>社交账号登入</label>
-                    <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
-                    <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
-                    <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
-                    <%--<a lay-href="user/reg" class="layadmin-user-jump-change layadmin-link">注册帐号</a>--%>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="layui-form-item" style="margin-bottom: 20px;">
+                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+                <div class="layui-unselect layui-form-checkbox" lay-skin="primary"><span>记住密码</span><i
+                        class="layui-icon layui-icon-ok"></i></div>
+                <a href="user/forget" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
+            </div>
+            <div class="layui-form-item">
+                <a class="layui-btn layui-btn-fluid" lay-submit="" lay-filter="login_submit_btn">登 入</a>
+            </div>
+            <div class="layui-trans layui-form-item layadmin-user-login-other">
+                <label>社交账号登入</label>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+                <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a>
+                <%--<a lay-href="user/reg" class="layadmin-user-jump-change layadmin-link">注册帐号</a>--%>
+            </div>
+        </form>
     </div>
+</div>
 
 
 <div class="layui-trans layadmin-user-login-footer">
@@ -249,17 +250,16 @@
 <script src="js/layui-v2.5.4/layui.js" charset="utf-8"></script>
 <script src="script/util/common-util-25.js" charset="utf-8"></script>
 <script type="text/javascript">
-    var systemTiem = new Date().getTime();
-
+    //刷新验证码
     function changeImg(self) {
         self.src = "system/getCheckCode?ran=" + Math.random();
     }
-
     layui.use(['layer', 'form', 'jquery'], function () {
         var form = layui.form,
             layer = layui.layer,
             $ = layui.jquery;
-
+        //同步服务器时间
+        var systemTiem = new Date().getTime();
         var loadSystemTime = function (time) {
             if (!isEmpty(time)) systemTiem = time;
             $('.system_time')[0].textContent = new Date(systemTiem).format('yyyy-MM-dd HH:mm:ss');
@@ -267,22 +267,20 @@
                 loadSystemTime(systemTiem + 500);
             }, 1000);
         }
-        //获取服务器时间
         $.ajax({
             url: "system/syncSystemTime",
             type: "GET",
-            async: false,
+            async: true,
             dataType: "json",
             success: function (data) {
                 loadSystemTime(data.data);
             }
         });
-
+        loadSystemTime(systemTiem);
+        //提交登陆
         form.on('submit(login_submit_btn)', function (btn) {
             var form = $(btn.elem).parent().parent();
-            //获取表单数据，并序列化
             var formData = form.serializeArray();
-            //将序列化数据转为对象
             var formObject = {};
             for (var item in formData) {
                 formObject[formData[item].name] = formData[item].value;
@@ -290,27 +288,24 @@
             $.ajax({
                 url: "login/doLogin",
                 type: "POST",
-                async: false,
+                async: true,
                 data: {
-                    account : formObject.account,
-                    passWord : formObject.passWord,
-                    vCode : formObject.vCode
+                    account: formObject.account,
+                    passWord: formObject.passWord,
+                    vCode: formObject.vCode
                 },
                 dataType: "json",
                 success: function (data) {
-                    layer.msg('恭喜您，登陆成功!');
+                    layer.msg('验证成功，即将跳转至首页...');
                     setTimeout(function () {
                         window.location.href = data.data;
-                    }, 1500);
+                    }, 1000);
                 },
                 error: function (error) {
                     layer.msg('请求异常');
                 }
             });
         });
-
-        loadSystemTime(systemTiem);
-
     });
 </script>
 

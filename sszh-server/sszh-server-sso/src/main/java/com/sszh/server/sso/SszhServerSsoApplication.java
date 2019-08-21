@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * 分布式-用户服务中心
  */
 @MapperScan(basePackages = {"com.sszh.server.sso.mapper"})                  //mybatis的mapper接口映射路径
-@SpringBootApplication(scanBasePackages = "com.sszh.server.sso.*")          //Spring Boot 核心注解
+@SpringBootApplication(scanBasePackages = "com.sszh.server.*")              //Spring Boot 核心注解
 @EnableFeignClients(basePackages = "com.sszh.server.*")                     //Feign 客户端
 @EnableEurekaClient                                                         //Spring Cloud 客户端-服务发现
 @EnableTransactionManagement                                                //Spring事务

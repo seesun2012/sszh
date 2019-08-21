@@ -1,8 +1,10 @@
 package com.sszh.cache;
 
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.stereotype.Component;
 
 
 /**

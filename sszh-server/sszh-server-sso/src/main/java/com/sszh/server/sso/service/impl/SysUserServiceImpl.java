@@ -1,5 +1,6 @@
 package com.sszh.server.sso.service.impl;
 
+import com.sszh.core.mapper.IBaseMapper;
 import com.sszh.core.service.BaseServiceImpl;
 import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.server.sso.mapper.SysUserMapper;
@@ -22,17 +23,22 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserEntity> implement
 
     @Override
     public SysUserEntity selectByPrimaryKey(String id) {
-        return sysUserMapper.selectByPrimaryKey(id);
+        return this.selectByPrimaryKey(id);
     }
 
     @Override
     public SysUserEntity loginQuery(String account) {
         Example param = new Example(SysUserEntity.class);
         param.getSelectColumns();
-        List<SysUserEntity> list = sysUserMapper.selectByExample(param);
+        List<SysUserEntity> list = this.selectByExample(param);
         if (null == list && list.size() <= 0) return null;
         SysUserEntity bean = sysUserMapper.queryLogin(account);
         return bean;
+    }
+
+    @Override
+    public IBaseMapper<SysUserEntity> getBaseMapper() {
+        return sysUserMapper;
     }
 
 }

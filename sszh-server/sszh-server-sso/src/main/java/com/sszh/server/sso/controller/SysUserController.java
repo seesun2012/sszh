@@ -3,18 +3,14 @@ package com.sszh.server.sso.controller;
 import com.sszh.server.sso.api.entity.SysUserEntity;
 import com.sszh.server.sso.api.feign.interfaces.SysUserClient;
 import com.sszh.server.sso.service.ISysUserService;
-import com.sszh.server.sso.service.impl.SysUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
 
 /**
  * 用户主控制器
  */
 @RestController
-@RequestMapping("/user/user")
+@RequestMapping("/sso/sysUser")
 public class SysUserController implements SysUserClient {
 
     @Autowired

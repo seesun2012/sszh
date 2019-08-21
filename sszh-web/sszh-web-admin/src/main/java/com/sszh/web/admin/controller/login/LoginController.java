@@ -72,8 +72,7 @@ public class LoginController extends BaseController {
         if (!(sessionCode.equals(vCode))) {
             throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "验证码不正确");
         }
-        SysUserEntity user = sysUserClient.selectByPrimaryKey(account);
-        user = sysUserClient.loginQuery(account);
+        SysUserEntity user = sysUserClient.loginQuery(account);
         if (null == user) {
             throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "用户不存在");
         }
@@ -95,8 +94,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/doOut", method = RequestMethod.GET)
     public void loginOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //删除缓存
-        adminCacheFactory.getUserCache().delUserSessionInfo(request.getSession().getId());
+        adminCacheFactory.getUserCache().delUserSessionInfo(request.getSession().getId());      //删除缓存
         response.sendRedirect(request.getContextPath() + "/login");
     }
 

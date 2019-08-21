@@ -1,11 +1,11 @@
 package com.sszh.web.admin.cache;
 
 import com.sszh.cache.BaseCacheFactory;
+import com.sszh.web.admin.cache.init.menu.SysMenuCache;
 import com.sszh.web.admin.cache.init.system.SystemCache;
 import com.sszh.web.admin.cache.init.user.UserCache;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -15,10 +15,19 @@ import org.springframework.stereotype.Component;
  */
 @Component
 //@DependsOn("springContextHolder")
+//@Order
 public class AdminCacheFactory extends BaseCacheFactory {
 
 
-
+    //菜单缓存
+    private SysMenuCache sysMenuCache;
+    public SysMenuCache getSysMenuCache() {
+        if (null == sysMenuCache) {
+            sysMenuCache = new SysMenuCache(getDefaultCache());
+        }
+        return sysMenuCache;
+    }
+    
     //系统缓存
     private SystemCache systemCache;
     public SystemCache getSystemCache() {
@@ -54,6 +63,7 @@ public class AdminCacheFactory extends BaseCacheFactory {
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         getSystemCache().setApplicationContext(applicationContext);
         getUserCache().setApplicationContext(applicationContext);
+        getSysMenuCache().setApplicationContext(applicationContext);
     }
     
     

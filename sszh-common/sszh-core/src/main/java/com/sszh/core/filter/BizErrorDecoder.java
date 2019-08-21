@@ -21,7 +21,7 @@ public class BizErrorDecoder implements ErrorDecoder {
         try {
             String jsonStr = Util.toString(response.body().asReader());
             JSONObject json = JSONObject.parseObject(jsonStr);
-            return new BaseBusinessException(json.getString("code"), json.getString("tip"));
+            return new BaseBusinessException(json.getString("status"), json.getString("message"));
         } catch (IOException e) {
             return new BaseBusinessException("104","系统异常");
         }

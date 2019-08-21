@@ -28,13 +28,15 @@ public class SystemController extends BaseController {
     @Autowired
     private AdminCacheFactory adminCacheFactory;
 
+
+    /* ========================================================== 系统配置 ========================================================== */
     /**
      * 获取当前服务器时间
      * @return
      */
     @RequestMapping(value = "/syncSystemTime", method = RequestMethod.GET)
     @ResponseBody
-    public JSONResult<Long> syncSystemTime() {
+    public JSONResult<Long> syncSystemTime() throws Exception {
         return JSONResult.newSuccessResult(new Date().getTime());
     }
 

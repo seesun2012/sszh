@@ -26,6 +26,11 @@
             <artifactId>sszh-server-sso-api</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.sszh</groupId>
+            <artifactId>sszh-cache</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
 
         <!-- ================================== 常用组件 ==================================-->
         <!-- 与数据库操作相关的依赖 -->
