@@ -50,7 +50,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;">其它系统</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">邮件管理</a></dd>
+                        <dd><a href="https://exmail.qq.com/login" target="_blank">邮件管理</a></dd>
                         <dd><a href="">消息管理</a></dd>
                         <dd><a href="">授权管理</a></dd>
                         <dd><a href="">商户管理系统</a></dd>
