@@ -43,6 +43,26 @@ public class SysUserEntity extends CommonEntity {
      */
     private String ranStr;
 
+    /**
+     * 手机号
+     */
+    private String mobilePhone;
+
+    /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 头像地址
+     */
+    private String photoUrl;
+
+    /**
+     * 用户状态(0:未激活，1:正常使用,2:冻结用户,3：用户被删除)
+     */
+    private Integer status;
+
     public String getId() {
         return id;
     }
@@ -81,6 +101,38 @@ public class SysUserEntity extends CommonEntity {
 
     public void setRanStr(String ranStr) {
         this.ranStr = ranStr == null ? null : ranStr.trim();
+    }
+
+    public String getMobilePhone() {
+        return mobilePhone;
+    }
+
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone == null ? null : mobilePhone.trim();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl == null ? null : photoUrl.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

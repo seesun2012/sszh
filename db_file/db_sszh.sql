@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100036
 File Encoding         : 65001
 
-Date: 2019-08-19 14:51:49
+Date: 2019-08-22 09:45:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -88,10 +88,14 @@ CREATE TABLE `t_sys_user` (
   `user_name` varchar(255) NOT NULL COMMENT '用户名',
   `pass_word` varchar(255) NOT NULL COMMENT '密码：（由原始密码+随机串组合）MD5值组合',
   `ran_str` varchar(255) NOT NULL COMMENT '随机字符串：由创建密码时随机生成的UUID',
+  `mobile_phone` varchar(20) NOT NULL COMMENT '手机号',
+  `email` varchar(30) NOT NULL COMMENT '邮箱',
+  `photo_url` varchar(1000) DEFAULT NULL COMMENT '头像地址',
+  `status` int(4) NOT NULL DEFAULT '0' COMMENT '用户状态(0:未激活，1:正常使用,2:冻结用户,3：用户被删除)',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of t_sys_user
 -- ----------------------------
-INSERT INTO `t_sys_user` VALUES ('1000', 'admin', '张三', '123456', '2f514dd792b248f8956cde24e12236dc');
+INSERT INTO `t_sys_user` VALUES ('1000', 'admin', '张三', '123456', '2f514dd792b248f8956cde24e12236dc', '15388888888', '123@sszh.com', null, '0');
