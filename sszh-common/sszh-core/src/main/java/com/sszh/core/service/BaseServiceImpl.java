@@ -8,16 +8,14 @@ import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public abstract class BaseServiceImpl<T extends CommonEntity> implements IBaseService<T> {
 
     //取继承当前service的实例的mapper接口，如返回：UserMapper.java
     public abstract IBaseMapper<T> getBaseMapper();
 
-    // 线程池
-    protected static ExecutorService executorService = Executors.newFixedThreadPool(30);
+    //    // 线程池
+    //    protected static ExecutorService executorService = Executors.newFixedThreadPool(30);
 
     @Override
     public List<T> selectAll() {
