@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100036
 File Encoding         : 65001
 
-Date: 2019-08-22 09:45:05
+Date: 2019-08-22 20:29:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -70,13 +70,16 @@ CREATE TABLE `t_sys_menu` (
   `order_num` int(4) NOT NULL DEFAULT '1' COMMENT '排序',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1004 DEFAULT CHARSET=utf8 COMMENT='运营系统-系统菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=1005 DEFAULT CHARSET=utf8 COMMENT='运营系统-系统菜单表';
 
 -- ----------------------------
 -- Records of t_sys_menu
 -- ----------------------------
-INSERT INTO `t_sys_menu` VALUES ('1000', '0', '系统管理', '#', '#', '1', null, '1', '1', '1', '2019-08-16 09:33:38');
+INSERT INTO `t_sys_menu` VALUES ('1000', '0', '系统管理', '#', '#', '1', 'layui-icon-set-fill', '1', '1', '1', '2019-08-16 09:33:38');
 INSERT INTO `t_sys_menu` VALUES ('1001', '1000', '菜单管理', 'sysMenu/index', '#', '1', null, '1', '1', '1', '2019-08-16 09:34:58');
+INSERT INTO `t_sys_menu` VALUES ('1002', '1000', '用户管理', 'user/index', '#', '1', null, '1', '1', '1', '2019-08-22 17:11:16');
+INSERT INTO `t_sys_menu` VALUES ('1003', '1000', '角色管理', 'role/index', '#', '1', null, '1', '1', '1', '2019-08-22 17:51:52');
+INSERT INTO `t_sys_menu` VALUES ('1004', '1000', '权限管理', '#', '#', '1', null, '-1', '1', '1', '0000-00-00 00:00:00');
 
 -- ----------------------------
 -- Table structure for t_sys_user
@@ -98,4 +101,4 @@ CREATE TABLE `t_sys_user` (
 -- ----------------------------
 -- Records of t_sys_user
 -- ----------------------------
-INSERT INTO `t_sys_user` VALUES ('1000', 'admin', '张三', '123456', '2f514dd792b248f8956cde24e12236dc', '15388888888', '123@sszh.com', null, '0');
+INSERT INTO `t_sys_user` VALUES ('czblZO8nBoZPS60MnTn', 'admin', '张三', '123456', '2f514dd792b248f8956cde24e12236dc', '15388888888', '123@sszh.com', null, '0');

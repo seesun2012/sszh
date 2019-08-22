@@ -44,4 +44,8 @@ public class StringUtils {
         return Numbers.toString(hi | (val & (hi - 1)), Numbers.MAX_RADIX).substring(1);
     }
     
+    public static void main(String[] args) {
+        System.out.println(uuid19());
+    }
+    
 }

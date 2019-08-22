@@ -94,8 +94,9 @@ public class LoginFilter implements Filter {
             }
         }
         // 是否登陆
-        String sessionId = httpRequest.getSession().getId();                                            //获取sessionId
-        SysUserEntity user = adminCacheFactory.getUserCache().getUserSessionInfo(sessionId);                 //获取用户信息
+        String sessionId = httpRequest.getSession().getId();                                                //获取sessionId
+        String ip=request.getRemoteAddr();                                                                  //获取真实IP、代理IP（防止session被窃取）
+        SysUserEntity user = adminCacheFactory.getUserCache().getUserSessionInfo(sessionId, ip);            //获取用户信息
         if (null != user && null != user.getId()) {
             chain.doFilter(request, response);
         } else {

@@ -79,10 +79,9 @@ public class LoginController extends BaseController {
         if (!user.getPassWord().equals(passWord)) {
             throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_105.getCode(), "密码不正确");
         }
-        //踢出异地登陆
-        adminCacheFactory.getUserCache().delUserSessionInfo(sessionId);
         //缓存用户信息
-        adminCacheFactory.getUserCache().setUserSessionInfo(user, sessionId);
+        String ip = request.getRemoteAddr();
+        adminCacheFactory.getUserCache().setUserSessionInfo(user, sessionId, ip);
         //删除验证码缓存
         adminCacheFactory.getSystemCache().delYanZhengMa(sessionId);
         return JSONResult.newSuccessResult(request.getContextPath() + "/");
@@ -94,7 +93,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/doOut", method = RequestMethod.GET)
     public void loginOut(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        adminCacheFactory.getUserCache().delUserSessionInfo(request.getSession().getId());      //删除缓存
+        adminCacheFactory.getUserCache().delUserSessionInfo(null, request.getSession().getId());      //删除缓存
         response.sendRedirect(request.getContextPath() + "/login");
     }
 

@@ -23,7 +23,8 @@ public class IndexController extends BaseController {
     @RequestMapping(value = "/")
     public String index(HttpServletRequest request) {
         String sessionId = request.getSession().getId();
-        adminCacheFactory.getUserCache().getUserSessionInfo(sessionId);
+        String ip = request.getRemoteAddr();
+        adminCacheFactory.getUserCache().getUserSessionInfo(sessionId, ip);
         return "index/index";
     }
     

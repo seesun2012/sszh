@@ -12,7 +12,7 @@
 
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
-            <a href="javascript:;" class="layui-logo" onclick="openContent(this)" data-url="home/index">
+            <a href="javascript:;" class="layui-logo" onclick="layui.openContent(this)" data-url="home/index">
                 <span>SSZH-运营管理系统</span>
             </a>
             <%--菜单栏伸缩--%>
@@ -83,7 +83,7 @@
 
         <!-- 内容主体区域 -->
         <div class="layui-body">
-            <iframe src="home/index" width="100%" height="100%" style="margin: 0px; padding: 0px; border: 0px;"></iframe>
+            <iframe id="content_iframe" src="home/index" width="100%" height="100%" style="margin: 0px; padding: 0px; border: 0px;"></iframe>
         </div>
     
         <!-- 底部区域 -->
@@ -92,19 +92,22 @@
         </div>
         
     </div>
-        
+
     
     <script src="js/layui-v2.5.4/layui.js"></script>
     <script src="script/util/common-util-25.js" charset="utf-8"></script>
     <script>
+        
+        var sszh = {};
         //JavaScript代码区域
-        function openContent(self){
-            var iframe = document.getElementsByTagName('iframe');
-            iframe[0].src = self.dataset.url;
-        }
         layui.use(['element', 'layer', 'form', 'jquery'], function () {
             var element = layui.element,
                 $ = layui.jquery;
+
+            layui.openContent = function(self){
+                var iframe = $('#content_iframe');
+                iframe[0].src = self.dataset.url;
+            }
             
             //获取菜单数据，拼接菜单
             $.ajax({
@@ -129,17 +132,17 @@
                     }
                     var str = '';
                     for (var i = 0; i < first_parent.length; i++) {
-                        str += '<ul class="layui-nav layui-nav-tree" lay-filter="test">\n' +
-                            '       <li class="layui-nav-item">\n' +
-                            '           <a href="javascript:;"><i class="layui-icon layui-icon-set"></i>  <span>' +first_parent[i].name+ '</span></a>\n' +
-                            '           <dl class="layui-nav-child">\n';
+                        str += '<ul class="layui-nav layui-nav-tree" lay-filter="test">' +
+                            '       <li class="layui-nav-item">' +
+                            '           <a href="javascript:;"><i class="layui-icon '+(first_parent[i].icon ? first_parent[i].icon : 'layui-icon-set')+'"></i>  <span>' +first_parent[i].name+ '</span></a>' +
+                            '           <dl class="layui-nav-child">';
                         for (var j = 0; j < second_parent.length; j++) {
                             if (first_parent[i].id == second_parent[j].parentId) {
-                                str += '               <dd><a href="javascript:;" onclick="openContent(this)" data-url="'+second_parent[j].url+'"><i class="layui-icon layui-icon-menu-fill"></i> <span>' +second_parent[i].name+ '</span></a></dd>\n';
+                                str += '               <dd><a href="javascript:;" onclick="layui.openContent(this)" data-url="'+second_parent[j].url+'"><i class="layui-icon '+(second_parent[j].icon ? second_parent[j].icon : '')+'"></i> <span>&nbsp;&nbsp;&nbsp;&nbsp;' +second_parent[j].name+ '</span></a></dd>';
                             }
                         }
-                        str += '           </dl>\n' +
-                            '       </li>\n' +
+                        str += '           </dl>' +
+                            '       </li>' +
                             '   </ul>';
                     }
                     $('#sszh-index-left-menu').append(str);
