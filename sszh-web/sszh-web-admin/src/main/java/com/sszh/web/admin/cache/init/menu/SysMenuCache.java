@@ -35,6 +35,13 @@ public class SysMenuCache extends AdminBaseCache {
 
 
     /**
+     * 清除菜单
+     */
+    public void delSystemMenu() throws Exception {
+        basecache.del(SYSTEM_MENU_LIST_KEY);
+    }
+    
+    /**
      * 获取菜单信息
      */
     public List<SysMenuEntity> getSystemMenu() throws Exception {

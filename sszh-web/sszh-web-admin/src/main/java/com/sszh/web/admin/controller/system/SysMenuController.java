@@ -46,15 +46,8 @@ public class SysMenuController {
     }
 
     /**
-     * 修改
+     * 新增
      */
-    @RequestMapping(value = "/update", method = RequestMethod.POST)
-    @ResponseBody
-    public JSONResult<Integer> update(SysMenuEntity record) throws Exception {
-        if (null == record || null == record.getId()) throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "参数对象不能为空");
-        record.setSystemMark(1);
-        return JSONResult.newSuccessResult(sysMenuService.updateByPrimaryKeySelective(record));
-    }
 
     /**
      * 删除
@@ -63,8 +56,24 @@ public class SysMenuController {
     @ResponseBody
     public JSONResult<Integer> delete(Integer id) throws Exception {
         if (null == id) throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "参数对象不能为空");
-        return JSONResult.newSuccessResult(sysMenuService.deleteByPrimaryKey(id));
+        Integer i = sysMenuService.deleteByPrimaryKey(id);
+        adminCacheFactory.getSysMenuCache().delSystemMenu();
+        return JSONResult.newSuccessResult(i);
     }
+
+    /**
+     * 修改
+     */
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    @ResponseBody
+    public JSONResult<Integer> update(SysMenuEntity record) throws Exception {
+        if (null == record || null == record.getId()) throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "参数对象不能为空");
+        record.setSystemMark(1);
+        Integer i = sysMenuService.updateByPrimaryKeySelective(record);
+        adminCacheFactory.getSysMenuCache().delSystemMenu();
+        return JSONResult.newSuccessResult(i);
+    }
+
 
 
 
