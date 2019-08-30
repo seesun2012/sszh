@@ -46,7 +46,7 @@
                 </script>
             </div>
             <!-- 其他系统 -->
-            <ul class="layui-nav layui-layout-left" style="padding: 0px 10px 0px 170px;">
+            <ul class="layui-nav layui-layout-left" style="padding: 0px 10px 0px 250px">
                 <li class="layui-nav-item">
                     <a href="javascript:;">其它系统</a>
                     <dl class="layui-nav-child">
@@ -134,7 +134,7 @@
                     for (var i = 0; i < first_parent.length; i++) {
                         str += '<ul class="layui-nav layui-nav-tree" lay-filter="test">' +
                             '       <li class="layui-nav-item">' +
-                            '           <a href="javascript:;"><i class="layui-icon '+(first_parent[i].icon ? first_parent[i].icon : 'layui-icon-set')+'"></i>  <span>' +first_parent[i].name+ '</span></a>' +
+                            '           <a href="javascript:;"><i class="layui-icon '+(first_parent[i].icon ? first_parent[i].icon : 'layui-icon-app')+'"></i>  <span>' +first_parent[i].name+ '</span></a>' +
                             '           <dl class="layui-nav-child">';
                         for (var j = 0; j < second_parent.length; j++) {
                             if (first_parent[i].id == second_parent[j].parentId) {

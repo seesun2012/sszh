@@ -1,147 +1,121 @@
 package com.sszh.core.service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.sszh.core.entity.CommonEntity;
 import com.sszh.core.mapper.IBaseMapper;
-import org.apache.ibatis.session.RowBounds;
 import org.springframework.transaction.annotation.Transactional;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
 public abstract class BaseServiceImpl<T extends CommonEntity> implements IBaseService<T> {
 
-    //取继承当前service的实例的mapper接口，如返回：UserMapper.java
+    // 获取当前Mapper实例（因为spring与JDK8配合使用时，会将泛型当作两个实例注入到IOC，IOC无法识别到底以那个为主，启动就会报错）
     public abstract IBaseMapper<T> getBaseMapper();
+    
+    // 根据实体条件查询（每个Mapper.xml必须实现一个此方法，不然下面的方法会报错）
+    public abstract List<T> selectSelective(T record);
 
     //    // 线程池
-    //    protected static ExecutorService executorService = Executors.newFixedThreadPool(30);
-
+    //    //    protected static ExecutorService executorService = Executors.newFixedThreadPool(30);
+    
+    /** ======================================================== 新增 ======================================================== **/
+    // 新增（默认）
+    @Transactional
     @Override
-    public List<T> selectAll() {
-        return this.getBaseMapper().selectAll();
+    public int insert(T record) {
+        return getBaseMapper().insert(record);
     }
-
+    // 根据条件新增（效率比较高）
+    @Transactional
     @Override
-    public T selectByPrimaryKey(T t) {
-        return this.getBaseMapper().selectByPrimaryKey(t);
+    public int insertSelective(T record) {
+        return getBaseMapper().insertSelective(record);
     }
-
-    @Transactional                      //本地事务
+    // 新增（默认，返回自增主键）
+    @Transactional
     @Override
-    public int deleteByPrimaryKey(T t) {
-        return this.getBaseMapper().deleteByPrimaryKey(t);
+    public int insertUseGeneratedKeys(T record) {
+        return getBaseMapper().insertUseGeneratedKeys(record);
     }
-
-    @Transactional                      //本地事务
+    // 批量新增
+    @Transactional
     @Override
-    public int updateByPrimaryKey(T t) {
-        return this.getBaseMapper().updateByPrimaryKey(t);
-    }
-
-    @Override
-    public T selectOne(T t) {
-        return this.getBaseMapper().selectOne(t);
-    }
-
-    @Override
-    public List<T> select(T t) {
-        return this.getBaseMapper().select(t);
-    }
-
-    @Override
-    public int insert(T t) {
-        return this.getBaseMapper().insert(t);
-    }
-
-    @Override
-    public int insertList(List<T> t) {
-        return this.getBaseMapper().insertList(t);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int delete(T t) {
-        return this.getBaseMapper().delete(t);
-    }
-
-    @Override
-    public int selectCount(T t) {
-        return this.getBaseMapper().selectCount(t);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int insertSelective(T t) {
-        return this.getBaseMapper().insertSelective(t);
-    }
-
-    @Override
-    public int selectCountByExample(Example example) {
-        return this.getBaseMapper().selectCountByExample(example);
-    }
-
-    @Override
-    public List<T> selectByExample(Example example) {
-        return this.getBaseMapper().selectByExample(example);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int deleteByExample(Example example) {
-        return this.getBaseMapper().deleteByExample(example);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int updateByExample(T t, Example example) {
-        return this.getBaseMapper().updateByExample(t, example);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int updateByPrimaryKeySelective(T t) {
-        return this.getBaseMapper().updateByPrimaryKeySelective(t);
-    }
-
-    @Transactional                      //本地事务
-    @Override
-    public int updateByExampleSelective(T t, Example example) {
-        return this.getBaseMapper().updateByExampleSelective(t, example);
-    }
-
-    @Override
-    public T selectOneByExample(T t) {
-        Example example = new Example(t.getClass());
-        List<T> list = this.getBaseMapper().selectByExample(example);
-        if (null == list || list.size() <= 0) return null;
-        return list.get(0);
-    }
-
-    @Override
-    public List<T> selectByRowBounds(T t, RowBounds rowBounds) {
-        return this.getBaseMapper().selectByRowBounds(t, rowBounds);
-    }
-
-    @Override
-    public List<T> selectByExampleAndRowBounds(Example example, RowBounds rowBounds) {
-        return this.getBaseMapper().selectByExampleAndRowBounds(example, rowBounds);
+    public int insertBatch(List<T> recordList) {
+        return getBaseMapper().insertList(recordList);
     }
     
+    /** ======================================================== 删除 ======================================================== **/
+    // 根据ID删除
+    @Transactional
     @Override
-    public List<T> selectPage(int pageNum, int pageSize) {
-        if (pageNum < 0) pageNum = 0;
-        if (pageSize <= 0) pageNum = 10;
-        PageHelper.startPage(pageNum, pageSize);
-        return this.getBaseMapper().selectAll();
+    public int deleteByPrimaryKey(Object id) {
+        return getBaseMapper().deleteByPrimaryKey(id);
     }
-
+    
+    /** ======================================================== 修改 ======================================================== **/
+    // 根据ID更新（如果不设置属性，自动更新为null）
+    @Transactional
     @Override
-    public List<T> selectPage(int pageNum, int pageSize, T entity) {
+    public int updateByPrimaryKey(T record) {
+        return getBaseMapper().updateByPrimaryKey(record);
+    }
+    // 推荐：根据ID更新（将设置的属性进行更新，没有设置的属性不更新）
+    @Transactional
+    @Override
+    public int updateByPrimaryKeySelective(T record) {
+        return getBaseMapper().updateByPrimaryKeySelective(record);
+    }
+    
+    /** ======================================================== 查询 ======================================================== **/
+    // 根据ID查询
+    @Override
+    public T getById(Object id) {
+        return getBaseMapper().selectByPrimaryKey(id);
+    }
+    @Override
+    public T selectByPrimaryKey(Object id) {
+        return getBaseMapper().selectByPrimaryKey(id);
+    }
+    // 查询实体（带条件）
+    @Override
+    public T getEntity(T record) {
+        List<T> list = selectSelective(record);
+        return list == null || list.size() <= 0 ? null : list.get(0);
+    }
+    // 获取全部数据
+    @Override
+    public List<T> getAll() {
+        return selectSelective(null);
+    }
+    // 获取全部数据（带条件）
+    @Override
+    public List<T> getList(T record) {
+        return selectSelective(record);
+    }
+    // 根据条件统计（带条件）
+    @Override
+    public long count(T record) {
+        return PageHelper.count(() ->
+            selectSelective(record)
+        );
+    }
+    // 分页查询
+    @Override
+    public PageInfo<T> getPage(T record, int pageNum, int pageSize) {
         if (pageNum < 0) pageNum = 0;
         if (pageSize <= 0) pageNum = 10;
-        PageHelper.startPage(pageNum, pageSize);
-        return this.getBaseMapper().select(entity);
+        PageInfo<T> page;
+        if (null == record) {
+            page = PageHelper.startPage(pageNum, pageSize).doSelectPageInfo(() ->
+                selectSelective(null)
+            );
+            return page;
+        }
+        page = PageHelper.startPage(pageNum, pageSize).doSelectPageInfo(
+            () -> selectSelective(record)
+        );
+        return page;
     }
 
 }

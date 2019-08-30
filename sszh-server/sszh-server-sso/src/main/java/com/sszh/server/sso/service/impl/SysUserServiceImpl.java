@@ -20,25 +20,19 @@ public class SysUserServiceImpl extends BaseServiceImpl<SysUserEntity> implement
     @Autowired
     private SysUserMapper sysUserMapper;
 
-
-    @Override
-    public SysUserEntity selectByPrimaryKey(String id) {
-        return this.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public SysUserEntity loginQuery(String account) {
-        Example param = new Example(SysUserEntity.class);
-        param.getSelectColumns();
-        List<SysUserEntity> list = this.selectByExample(param);
-        if (null == list && list.size() <= 0) return null;
-        SysUserEntity bean = sysUserMapper.queryLogin(account);
-        return bean;
-    }
-
     @Override
     public IBaseMapper<SysUserEntity> getBaseMapper() {
         return sysUserMapper;
+    }
+    
+    @Override
+    public List<SysUserEntity> selectSelective(SysUserEntity record) {
+        return sysUserMapper.selectSelective(record);
+    }
+    
+    @Override
+    public SysUserEntity loginQuery(String account) {
+        return sysUserMapper.queryLogin(account);
     }
 
 }

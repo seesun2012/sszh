@@ -1,4 +1,4 @@
-package com.sszh.web.admin.controller.home;
+package com.sszh.web.admin.controller.system;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

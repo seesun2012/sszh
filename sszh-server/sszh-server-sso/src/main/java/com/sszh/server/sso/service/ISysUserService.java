@@ -9,9 +9,6 @@ import com.sszh.server.sso.api.entity.SysUserEntity;
  */
 public interface ISysUserService extends IBaseService<SysUserEntity> {
 
-    //根据用户ID查询用户信息
-    SysUserEntity selectByPrimaryKey(String id);
-
     //登陆查询
     SysUserEntity loginQuery(String account);
     

@@ -25,7 +25,7 @@ if (!(typeof jQuery == 'undefined')) {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 //错误方法增强处理
                 if ('TIMEOUT' == XMLHttpRequest.getResponseHeader('SESSIONS_TATUS')) {
-                    window.location.href = XMLHttpRequest.getResponseHeader('content_path');
+                    parent.window.parent.window.location.href = XMLHttpRequest.getResponseHeader('content_path');
                 }
                 fn.error(XMLHttpRequest, textStatus, errorThrown);
             },
@@ -72,7 +72,7 @@ if (!(typeof layui == "undefined")) {
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     //错误方法增强处理
                     if ('TIMEOUT' == XMLHttpRequest.getResponseHeader('SESSIONS_TATUS')) {
-                        window.location.href = XMLHttpRequest.getResponseHeader('content_path');
+                        parent.window.parent.window.location.href = XMLHttpRequest.getResponseHeader('content_path');
                     }
                     fn.error(XMLHttpRequest, textStatus, errorThrown);
                 },
@@ -157,6 +157,67 @@ var doProductType = function (params) {
             }
         });
     });
+}
+
+// 销售属性参数校验
+var check_value = function(obj, type, min, max){
+	var value = obj.value;
+	type = type.toLocaleLowerCase();
+	if('string' == type && (""==obj.value || undefined==obj.value || obj.value.length < min || obj.value.length > max)) {
+		/* window.layer.tips('该项不能为空，自动填充默认值为：' + min, obj);
+		obj.value = min; */
+		window.layer.tips('该项长度限制为：' + min + '-' + max + '字符', obj);
+		//if(obj.value.length > max) obj.value = obj.value.substring(0, max);
+		return true;
+	}
+	if("intnumber"==type || "int"==type || "number"==type) {
+		var oldNum = 1;
+		if(obj.value<0){
+			oldNum = -1;
+		}
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		obj.value = parseInt(obj.value)*oldNum;
+		if(obj.value>max || obj.value<min || "NaN"==obj.value){
+			/* window.layer.tips('该项必须在[' + min +', ' + max + ']之间，已自动设定默认值', obj);
+			if(obj.value>max) obj.value = max;
+			if(obj.value<min) obj.value = min;
+			if("NaN"==obj.value) obj.value = min; */
+			obj.value = '';
+			window.layer.tips('该项必须在[' + min +', ' + max + ']之间', obj);
+			return true;
+		}
+	}
+	if("price"==type || "money"==type || "floatnumber"==type || "float"==type){
+		//先把非数字的都替换掉，除了数字和.
+		obj.value = obj.value.replace(/[^\d.]/g,"");
+		//必须保证第一个为数字而不是.
+		obj.value = obj.value.replace(/^\./g,"");
+		//保证只有出现一个.而没有多个.
+		obj.value = obj.value.replace(/\.{2,}/g,".");
+		//保证.只出现一次，而不能出现两次以上
+		obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+		obj.value = parseFloat(obj.value).toFixed(2);
+		if(obj.value>max || obj.value<min || "NaN"==obj.value){
+			/* window.layer.tips('该项必须在[' + min +', ' + max + ']之间，已自动设定默认值', obj);
+			if(obj.value>max) obj.value = max;
+			if(obj.value<min) obj.value = min;
+			if("NaN"==obj.value) obj.value = min; */
+			obj.value = '';
+			window.layer.tips('该项必须在[' + min +', ' + max + ']之间', obj);
+			return true;
+		}
+	}
+}
+
+//获取form表单数据
+var getFormData = function(formDom) {
+    var formData = formDom.serializeArray();
+    var formObject = {};
+    for (var item in formData) {
+        formObject[formData[item].name] = formData[item].value;
+    }
+    return formObject;
 }
 
 //判断是否为空

@@ -1,4 +1,4 @@
-package com.sszh.server.sso.api.entity;
+package com.sszh.web.admin.entity;
 
 import com.sszh.core.entity.CommonEntity;
 import lombok.AllArgsConstructor;
@@ -7,7 +7,10 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.Accessors;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
 
 @RequiredArgsConstructor

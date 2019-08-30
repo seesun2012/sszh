@@ -1,4 +1,4 @@
-package com.sszh.web.admin.controller.index;
+package com.sszh.web.admin.controller.system;
 
 import com.sszh.web.admin.cache.AdminCacheFactory;
 import com.sszh.web.admin.controller.BaseController;

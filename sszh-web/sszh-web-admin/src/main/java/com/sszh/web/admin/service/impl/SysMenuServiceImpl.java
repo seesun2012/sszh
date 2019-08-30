@@ -1,12 +1,10 @@
-package com.sszh.server.sso.service.impl;
+package com.sszh.web.admin.service.impl;
 
 import com.sszh.core.mapper.IBaseMapper;
 import com.sszh.core.service.BaseServiceImpl;
-import com.sszh.server.sso.api.entity.SysMenuEntity;
-import com.sszh.server.sso.api.entity.SysUserEntity;
-import com.sszh.server.sso.mapper.SysMenuMapper;
-import com.sszh.server.sso.mapper.SysUserMapper;
-import com.sszh.server.sso.service.ISysMenuService;
+import com.sszh.web.admin.entity.SysMenuEntity;
+import com.sszh.web.admin.mapper.SysMenuMapper;
+import com.sszh.web.admin.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +23,10 @@ public class SysMenuServiceImpl extends BaseServiceImpl<SysMenuEntity> implement
     public IBaseMapper<SysMenuEntity> getBaseMapper() {
         return sysMenuMapper;
     }
-    
+
+    @Override
+    public List<SysMenuEntity> selectSelective(SysMenuEntity record) {
+        return sysMenuMapper.selectSelective(record);
+    }
+
 }

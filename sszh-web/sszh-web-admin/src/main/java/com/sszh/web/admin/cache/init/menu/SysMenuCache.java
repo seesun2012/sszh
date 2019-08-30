@@ -4,10 +4,11 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sszh.cache.BaseCacheService;
 import com.sszh.common.util.date.ExpireTime;
-import com.sszh.server.sso.api.entity.SysMenuEntity;
-import com.sszh.server.sso.api.feign.interfaces.SysMenuClient;
 import com.sszh.web.admin.cache.AdminBaseCache;
 import com.sszh.web.admin.cache.init.user.UserCache;
+import com.sszh.web.admin.entity.SysMenuEntity;
+import com.sszh.web.admin.service.ISysMenuService;
+import com.sszh.web.admin.service.impl.SysMenuServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 运营缓存-菜单m
+ * 运营缓存-菜单
  */
 public class SysMenuCache extends AdminBaseCache {
 
@@ -26,7 +27,7 @@ public class SysMenuCache extends AdminBaseCache {
     private static final Logger logger = LoggerFactory.getLogger(UserCache.class);
 
     @Resource
-    private SysMenuClient sysMenuClient;
+    private ISysMenuService sysMenuService;
 
     /**================================== 菜单相关 ========================================*/
     public static final String SELF_KEY = PROJECT_KEY + "sysmenu:";
@@ -45,7 +46,7 @@ public class SysMenuCache extends AdminBaseCache {
             return list;
         }
         if (null == list || list.size() <= 0) {
-            list = sysMenuClient.selectAll();
+            list = sysMenuService.getAll();
             //菜单必须是开启的
             Iterator<SysMenuEntity> it = list.iterator();
             while (it.hasNext()) {
@@ -76,7 +77,7 @@ public class SysMenuCache extends AdminBaseCache {
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) {
         logger.info("----------------------->初始化缓存控制器：运营-菜单模块");
-        this.sysMenuClient = applicationContext.getBean(SysMenuClient.class);
+        this.sysMenuService = applicationContext.getBean(SysMenuServiceImpl.class);
     }
 
 }

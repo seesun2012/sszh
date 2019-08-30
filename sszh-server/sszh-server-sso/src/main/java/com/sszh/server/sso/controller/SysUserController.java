@@ -31,7 +31,7 @@ public class SysUserController implements SysUserClient {
     @Override
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.GET)
     public SysUserEntity selectByPrimaryKey(@RequestParam(name = "id") String id) throws Exception {
-        return sysUserService.selectByPrimaryKey(id);
+        return sysUserService.getById(id);
     }
 
     /**

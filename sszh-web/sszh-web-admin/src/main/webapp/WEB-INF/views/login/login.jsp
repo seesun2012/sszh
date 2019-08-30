@@ -280,11 +280,7 @@
         //提交登陆
         form.on('submit(login_submit_btn)', function (btn) {
             var form = $(btn.elem).parent().parent();
-            var formData = form.serializeArray();
-            var formObject = {};
-            for (var item in formData) {
-                formObject[formData[item].name] = formData[item].value;
-            }
+            var formObject = getFormData(form);
             $.ajax({
                 url: "login/doLogin",
                 type: "POST",

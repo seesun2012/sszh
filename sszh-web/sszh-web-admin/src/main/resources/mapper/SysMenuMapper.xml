@@ -17,4 +17,46 @@
   <sql id="Base_Column_List">
     id, parent_id, name, url, perms, type, icon, status, system_mark, order_num, create_time
   </sql>
+  
+  <select id="selectSelective" parameterType="com.sszh.web.admin.entity.SysMenuEntity" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from t_sys_menu
+    <where>
+      <if test="id != null">
+        and id = #{id,jdbcType=INTEGER}
+      </if>
+      <if test="parentId != null">
+        and parent_id = #{parentId,jdbcType=INTEGER}
+      </if>
+      <if test="name != null and name != ''">
+        <bind name="nameStr" value="'%' + name + '%'"/>
+        and name like #{nameStr}
+      </if>
+      <if test="url != null and url != ''">
+        and url = #{url,jdbcType=VARCHAR}
+      </if>
+      <if test="perms != null and perms != ''">
+        and perms = #{perms,jdbcType=VARCHAR}
+      </if>
+      <if test="type != null">
+        and type = #{type,jdbcType=INTEGER}
+      </if>
+      <if test="icon != null and icon != ''">
+        and icon = #{icon,jdbcType=VARCHAR}
+      </if>
+      <if test="status != null">
+        and status = #{status,jdbcType=INTEGER}
+      </if>
+      <if test="systemMark != null">
+        and system_mark = #{systemMark,jdbcType=INTEGER}
+      </if>
+      <if test="orderNum != null">
+        and order_num = #{orderNum,jdbcType=INTEGER}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime,jdbcType=TIMESTAMP}
+      </if>
+    </where>
+    ORDER BY PARENT_ID ASC, ORDER_NUM DESC
+  </select>
+  
 </mapper>
