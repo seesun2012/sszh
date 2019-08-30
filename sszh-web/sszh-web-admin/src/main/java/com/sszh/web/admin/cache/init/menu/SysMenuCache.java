@@ -46,7 +46,11 @@ public class SysMenuCache extends AdminBaseCache {
             return list;
         }
         if (null == list || list.size() <= 0) {
-            list = sysMenuService.getAll();
+            SysMenuEntity record = new SysMenuEntity();
+            record.setType(1);
+            record.setStatus(1);
+            record.setSystemMark(1);
+            list = sysMenuService.getList(record);
             //菜单必须是开启的
             Iterator<SysMenuEntity> it = list.iterator();
             while (it.hasNext()) {

@@ -120,14 +120,19 @@
                 ,cols: [[
                     {field:'id', title: 'ID', width:90, sort: true}
                     ,{field:'parentId', title: '父菜单ID', width:90}
-                    /*,{field:'type', title: '类型', width:90, sort: true, templet:function(e) {
-                        return e.type == 1 ? '运营系统' : '其他（<span style="color:red;">有误</span>）';
-                    }}*/
                     ,{field:'name', title: '菜单名称', sort: true}
                     ,{field:'url', title: 'URL'}
                     ,{field:'perms', title: '授权'}
                     ,{field:'icon', title: '菜单图标'}
-                    ,{field:'orderNum', title: '排序值', width:90, sort: true}
+                    ,{field:'type', title: '类型', width:90, sort: true, templet:function(e) {
+                        if (e.type == 1) return '菜单'; 
+                        if (e.type == 2) return '按钮'; 
+                    }}
+                    ,{field:'orderNum', title: '排序值', width:90, sort: true, templet : function(e) {
+                        if (!e.orderNum) return ''; 
+                        if (e.orderNum == 0) return ''; 
+                        return e.orderNum
+                    }}
                     ,{field:'createTime', title: '创建时间', width:160, sort: true, templet : function(e) {
                         return new Date(e.createTime).format('yyyy-MM-dd HH:mm:ss');
                     }}

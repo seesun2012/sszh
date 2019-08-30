@@ -52,6 +52,7 @@ public class SysMenuController {
     @ResponseBody
     public JSONResult<Integer> update(SysMenuEntity record) throws Exception {
         if (null == record || null == record.getId()) throw new BaseBusinessException(BaseExceptionCodeEnum.BASE_10000.getCode(), "参数对象不能为空");
+        record.setSystemMark(1);
         return JSONResult.newSuccessResult(sysMenuService.updateByPrimaryKeySelective(record));
     }
 
