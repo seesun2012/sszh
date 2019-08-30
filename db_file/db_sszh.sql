@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100036
 File Encoding         : 65001
 
-Date: 2019-08-30 21:12:06
+Date: 2019-08-30 21:25:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,7 +67,7 @@ CREATE TABLE `t_sys_menu` (
   `icon` varchar(50) DEFAULT NULL COMMENT '菜单图标',
   `status` int(4) NOT NULL DEFAULT '-1' COMMENT '菜单状态：-1 禁用  1启用',
   `system_mark` int(4) NOT NULL DEFAULT '1' COMMENT '系统标识：1 运营  2 商户PC',
-  `order_num` int(4) NOT NULL DEFAULT '1' COMMENT '排序',
+  `order_num` int(4) DEFAULT NULL COMMENT '排序',
   `create_time` datetime NOT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1036 DEFAULT CHARSET=utf8 COMMENT='运营系统-系统菜单表';
@@ -75,39 +75,39 @@ CREATE TABLE `t_sys_menu` (
 -- ----------------------------
 -- Records of t_sys_menu
 -- ----------------------------
-INSERT INTO `t_sys_menu` VALUES ('0', '-1', '根目录', '#', '#', '1', null, '-1', '1', '1', '2019-08-30 20:26:25');
-INSERT INTO `t_sys_menu` VALUES ('1000', '0', '系统管理', '#', '#', '1', 'layui-icon-set', '1', '1', '1', '2019-08-16 09:33:38');
+INSERT INTO `t_sys_menu` VALUES ('0', '-1', '根目录', '#', '#', '1', null, '-1', '1', null, '2019-08-30 20:26:25');
+INSERT INTO `t_sys_menu` VALUES ('1000', '0', '系统管理', '#', '#', '1', 'layui-icon-set', '1', '1', null, '2019-08-16 09:33:38');
 INSERT INTO `t_sys_menu` VALUES ('1001', '1000', '菜单管理', 'sysMenu/index', '#', '1', null, '1', '1', '6', '2019-08-16 09:34:58');
 INSERT INTO `t_sys_menu` VALUES ('1002', '1000', '用户管理', 'user/index', '#', '1', null, '1', '1', '9', '2019-08-22 17:11:16');
 INSERT INTO `t_sys_menu` VALUES ('1003', '1000', '角色管理', 'role/index', '#', '1', null, '1', '1', '8', '2019-08-22 17:51:52');
 INSERT INTO `t_sys_menu` VALUES ('1004', '1000', '权限管理', '#', '#', '1', null, '1', '1', '7', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1005', '0', '测试', '#', '#', '1', 'layui-icon-app', '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1006', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1007', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1008', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1009', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1010', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1011', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1012', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1013', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1014', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1015', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1016', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1017', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1018', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1019', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1020', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1021', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1022', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1023', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1024', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1025', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1026', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1027', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1028', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1029', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1030', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
-INSERT INTO `t_sys_menu` VALUES ('1031', '1005', '测试模块', '#', '#', '1', null, '1', '1', '1', '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1005', '0', '测试', '#', '#', '1', 'layui-icon-app', '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1006', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1007', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1008', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1009', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1010', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1011', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1012', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1013', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1014', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1015', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1016', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1017', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1018', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1019', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1020', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1021', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1022', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1023', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1024', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1025', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1026', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1027', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1028', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1029', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1030', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
+INSERT INTO `t_sys_menu` VALUES ('1031', '1005', '测试模块', '#', '#', '1', null, '1', '1', null, '2019-08-29 09:52:58');
 
 -- ----------------------------
 -- Table structure for t_sys_role
