@@ -261,7 +261,7 @@
         //同步服务器时间
         var systemTiem = new Date().getTime();
         var loadSystemTime = function (time) {
-            if (!isEmpty(time)) systemTiem = time;
+            if (!util.check.isEmpty(time)) systemTiem = time;
             $('.system_time')[0].textContent = new Date(systemTiem).format('yyyy-MM-dd HH:mm:ss');
             setTimeout(function () {
                 loadSystemTime(systemTiem + 500);
@@ -280,7 +280,7 @@
         //提交登陆
         form.on('submit(login_submit_btn)', function (btn) {
             var form = $(btn.elem).parent().parent();
-            var formObject = getFormData(form);
+            var formObject = util.form.getFormData(form);
             $.ajax({
                 url: "login/doLogin",
                 type: "POST",

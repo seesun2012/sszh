@@ -73,7 +73,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">菜单名称：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入券名称" class="layui-input" onblur="check_value(this, 'string', 1, 10)">
+                    <input type="text" name="name" lay-verify="name" autocomplete="off" placeholder="请输入菜单名称" class="layui-input" onblur="util.check.check_value(this, 'string', 1, 10)">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -144,19 +144,29 @@
                     }}
                 ]]
                 ,done: function(res, curr, count){
-                    var data = res;
+                    //成功之后
+                }
+
+            });
+            
+            //获取菜单数据，拼接菜单
+            $.ajax({
+                url: "sysMenu/getReloMenuList",
+                type: "GET",
+                async: true,
+                dataType: "json",
+                success: function (data) {
                     var str = '';
                     if (data.data) {
                         data.data.forEach(function(self, opt){
                             str += "<option value=\"" + self.id + "\" >" + (self.name + '/' + self.parentId) + "</option>";
                         });
-                    } 
+                    }
                     $('.parentId').each(function(e, v){
                         $(v).html('<option value="">请输入搜索关键词</option>' + str);
                     });
                     form.render();
                 }
-
             });
             
             //查询
@@ -198,7 +208,7 @@
                     dataType: "json",
                     success: function (data) {
                         layer.msg(obj.elem.checked ? '开启成功' : '隐藏成功');
-                        var serchData = getFormData($('.serch_form'));
+                        var serchData = util.form.getFormData($('.serch_form'));
                         table.reload('lay_data_table', {
                             where: serchData
                         }, 'data');

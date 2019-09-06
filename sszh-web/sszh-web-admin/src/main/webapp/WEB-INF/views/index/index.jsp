@@ -157,7 +157,7 @@
             //同步服务器时间
             var systemTiem = new Date().getTime();
             var loadSystemTime = function (time) {
-                if (!isEmpty(time)) systemTiem = time;
+                if (!util.check.isEmpty(time)) systemTiem = time;
                 $('.system_time')[0].textContent = new Date(systemTiem).format('yyyy年MM月dd日 HH:mm:ss');
                 setTimeout(function () {
                     loadSystemTime(systemTiem + 500);
