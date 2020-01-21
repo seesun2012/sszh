@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-parent</artifactId>
+        <artifactId>sszh-common</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../sszh-common/pom.xml</relativePath>
     </parent>
     <artifactId>sszh-core</artifactId>
     <description>sszh-core-核心包</description>

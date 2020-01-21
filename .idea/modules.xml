@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/sszh.iml" filepath="$PROJECT_DIR$/.idea/sszh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-cache/sszh-cache.iml" filepath="$PROJECT_DIR$/sszh-cache/sszh-cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-common/sszh-common.iml" filepath="$PROJECT_DIR$/sszh-common/sszh-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-common/sszh-core/sszh-core.iml" filepath="$PROJECT_DIR$/sszh-common/sszh-core/sszh-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-parent/sszh-parent.iml" filepath="$PROJECT_DIR$/sszh-parent/sszh-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server-api/sszh-server-api.iml" filepath="$PROJECT_DIR$/sszh-server-api/sszh-server-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server-boot-admin/sszh-server-boot-admin.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server-boot-admin/sszh-server-boot-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server-config/sszh-server-config.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server-config/sszh-server-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server-eureka/sszh-server-eureka.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server-eureka/sszh-server-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server-order/sszh-server-order.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server-order/sszh-server-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server-api/sszh-server-order-api/sszh-server-order-api.iml" filepath="$PROJECT_DIR$/sszh-server-api/sszh-server-order-api/sszh-server-order-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-server-sso/sszh-server-sso.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-server-sso/sszh-server-sso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server-api/sszh-server-sso-api/sszh-server-sso-api.iml" filepath="$PROJECT_DIR$/sszh-server-api/sszh-server-sso-api/sszh-server-sso-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-server/sszh-txlcn-tm/sszh-txlcn-tm.iml" filepath="$PROJECT_DIR$/sszh-server/sszh-txlcn-tm/sszh-txlcn-tm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-common/sszh-util/sszh-util.iml" filepath="$PROJECT_DIR$/sszh-common/sszh-util/sszh-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-common/sszh-util-mybatis-generator/sszh-util-mybatis-generator.iml" filepath="$PROJECT_DIR$/sszh-common/sszh-util-mybatis-generator/sszh-util-mybatis-generator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-web/sszh-web.iml" filepath="$PROJECT_DIR$/sszh-web/sszh-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-web/sszh-web-admin/sszh-web-admin.iml" filepath="$PROJECT_DIR$/sszh-web/sszh-web-admin/sszh-web-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-web/sszh-web-api/sszh-web-api.iml" filepath="$PROJECT_DIR$/sszh-web/sszh-web-api/sszh-web-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sszh-web/sszh-web-wechat-applet/sszh-web-wechat-applet.iml" filepath="$PROJECT_DIR$/sszh-web/sszh-web-wechat-applet/sszh-web-wechat-applet.iml" />
+    </modules>
+  </component>
+</project>

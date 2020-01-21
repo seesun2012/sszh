@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/sszh-cache" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-common/sszh-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-common/sszh-util" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-common/sszh-util-mybatis-generator" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server-api/sszh-server-order-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server-api/sszh-server-sso-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-server-boot-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-server-config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-server-eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-server-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-server-sso" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-server/sszh-txlcn-tm" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-web" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-web/sszh-web-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-web/sszh-web-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sszh-web/sszh-web-wechat-applet" charset="UTF-8" />
+  </component>
+</project>

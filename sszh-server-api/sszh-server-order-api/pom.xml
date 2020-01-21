@@ -4,8 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.sszh</groupId>
-        <artifactId>sszh-parent</artifactId>
+        <artifactId>sszh-server-api</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../../sszh-server-api/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>sszh-server-order-api</artifactId>

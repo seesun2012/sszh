@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sszh-web-api:war">
+    <output-path>$PROJECT_DIR$/sszh-web/sszh-web-api/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>sszh-web-api</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="sszh-web-api-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="sszh-web-api:war exploded" />
+    </root>
+  </artifact>
+</component>
