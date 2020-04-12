@@ -1,0 +1,30 @@
+#参照配置：https://blog.csdn.net/zzhuan_1/article/details/84560438
+server:
+  port: 6001
+
+spring:
+  application:
+    name: sszh-zull-getway
+
+#####################################################################################################
+#spring could 注册中心配置
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:123456@localhost:7075/eureka/      #服务注册中信地址，含有BASIC认证的用户名和密码
+  instance:
+    prefer-ip-address: true                                       #将IP注册到服务注册中心
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+
+#####################################################################################################
+#自定义路由映射
+zuul:
+  routes:
+    order-service: /apigateway/order/**
+    product-service: /apigateway/product/**
+
+#####################################################################################################
+#统一入口为上面的配置，其他入口忽略
+ignored-patterns: /*-service/**
+#忽略整个服务，对外提供接口
+ignored-services: order-service

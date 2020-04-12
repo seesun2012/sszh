@@ -21,6 +21,7 @@
         <module>sszh-server-sso</module>
         <module>sszh-server-order</module>
         <module>sszh-txlcn-tm</module>
+        <module>sszh-zull-getway</module>
     </modules>
 
     <build>
